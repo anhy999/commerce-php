@@ -1,6 +1,6 @@
 ---
 title: CompanyCredit
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_CompanyCredit module
@@ -29,7 +29,7 @@ Extension developers can interact with the Magento_CompanyCredit module. For mor
 
 [The Magento dependency injection mechanism](https://developer.adobe.com/commerce/php/development/components/dependency-injection/) enables you to override the functionality of the Magento_CompanyCredit module.
 
-[Payment method configuration](../development/payments-integrations/base-integration/payment-option-config.md) will allow you additional configuration to extend module functionality.
+[Payment method configuration](https://developer.adobe.com/commerce/php/development/payments-integrations/base-integration/payment-option-config/) will allow you additional configuration to extend module functionality.
 
 ### Layouts
 
@@ -45,3 +45,6 @@ The following directories contain extensible UI components:
 - `Magento\CompanyCredit\view\frontend\ui_component` - balance history listing
 
 For more information, see [UI Listing/Grid Component](https://developer.adobe.com/commerce/frontend-core/ui-components/components/listing-grid/) and [UI Form Component](https://developer.adobe.com/commerce/frontend-core/ui-components/components/form/)
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.0.

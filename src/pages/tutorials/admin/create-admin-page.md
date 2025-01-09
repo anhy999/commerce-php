@@ -1,11 +1,13 @@
 ---
 title: Create an Admin Page | Commerce PHP Extensions
 description: Follow this tutorial to create a module that displays a custom page in the Adobe Commerce and Magento Open Source Admin application.
+keywords:
+  - Extensions
 ---
 
 # Create an Admin page
 
-This tutorial gives instructions for the creation of a [module](https://glossary.magento.com/module) that displays a simple page in the [Admin](https://glossary.magento.com/magento-admin).
+This tutorial gives instructions for the creation of a module that displays a simple page in the Admin.
 
 For the purposes of this tutorial 'MyCompany' is the name of the company associated with a module named `ExampleAdminNewPage`.
 
@@ -27,7 +29,7 @@ These initial boilerplate files are the bare essential files needed for any modu
 
 ### `composer.json` file
 
-In the module's root directory, create the file `composer.json`. This file gives [composer](https://glossary.magento.com/composer) the ability to install this module and its dependencies.
+In the module's root directory, create the file `composer.json`. This file gives composer the ability to install this module and its dependencies.
 For more information see: [`composer.json`](../../development/build/composer-integration.md).
 
  ```json
@@ -61,8 +63,8 @@ For more information see: [registering your component](../../development/build/c
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -113,7 +115,7 @@ For more information on this topic, see: [routing](../../development/components/
 
 ### `etc/adminhtml/menu.xml` file
 
-Under the created `etc` directory, create a new directory called `adminhtml`. Under that directory, create the file `menu.xml`. This [XML](https://glossary.magento.com/xml) file adds new menu items to the [Admin](https://glossary.magento.com/admin).
+Under the created `etc` directory, create a new directory called `adminhtml`. Under that directory, create the file `menu.xml`. This XML file adds new menu items to the Admin.
 
 The `menu.xml` file provided below adds two items in the Content section of the left navigation:
 
@@ -167,13 +169,13 @@ In the module's root directory, run the following command:
 mkdir -p Controller/Adminhtml/HelloWorld
 ```
 
-Inside `Controller/Adminhtml/HelloWorld` directory, create the file `Index.php`. This file is the class assigned to the default Index action for the `HelloWorld` controller. Since the admin area serves this page, the file belongs in the `Adminhtml` directory, and the class itself extends [`\Magento\Backend\App\Action`](https://github.com/magento/magento2/blob/2.4}/app/code/Magento/Backend/App/Action.php).
+Inside `Controller/Adminhtml/HelloWorld` directory, create the file `Index.php`. This file is the class assigned to the default Index action for the `HelloWorld` controller. Since the admin area serves this page, the file belongs in the `Adminhtml` directory, and the class itself extends [`\Magento\Backend\App\Action`](https://github.com/magento/magento2/blob/2.4/app/code/Magento/Backend/App/Action.php).
 
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace MyCompany\ExampleAdminNewPage\Controller\Adminhtml\HelloWorld;
@@ -242,7 +244,7 @@ These files belong in the `view/adminhtml` directory because the Admin area use 
 
 ### `view/adminhtml/layout/exampleadminnewpage_helloworld_index.xml` file
 
-This file defines the [layout](https://glossary.magento.com/layout) and structure of the index page for the HelloWorld controller. It sets the title to "Greetings" and assigns the `helloworld.phtml` template as the content in a `Magento\Backend\Block\Template` block class.
+This file defines the layout and structure of the index page for the HelloWorld controller. It sets the title to "Greetings" and assigns the `helloworld.phtml` template as the content in a `Magento\Backend\Block\Template` block class.
 
 The name of this file uses the following pattern: *routeId*\_*controller*\_*action*.xml
 

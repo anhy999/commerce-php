@@ -1,9 +1,13 @@
 ---
 title: Payment Token
 description: This is an overview of how payment tokens store data received from the payment provider.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -13,7 +17,7 @@ Adobe Commerce does not store any private credit card details. Commerce only sto
 
 The basic interface for Payment Token is [PaymentTokenInterface](https://github.com/magento/magento2/tree/2.4/app/code/Magento/Vault/Api/Data/PaymentTokenInterface.php).
 
-To retrieve and store token details, you need to implement a [response handler](../payment-gateway/response-handler.md). In the response handler a Payment Token [entity](https://glossary.magento.com/entity) is created and stored in the payment [extension](https://glossary.magento.com/extension) attributes.
+To retrieve and store token details, you need to implement a [response handler](../payment-gateway/response-handler.md). In the response handler a Payment Token entity is created and stored in the payment extension attributes.
 
 Following sample is an example of the response handler implementation:
 

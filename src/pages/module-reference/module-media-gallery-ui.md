@@ -1,6 +1,6 @@
 ---
 title: MediaGalleryUi
-description: README.md contents of the module from the source code
+description: Magento module responsible for the media gallery UI implementation
 ---
 
 # Magento_MediaGalleryUi module
@@ -11,7 +11,7 @@ The Magento_MediaGalleryUi module is responsible for the media gallery user inte
 
 Before installing this module, note that the Magento_MediaGalleryUi is dependent on the Magento_Cms module.
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -22,6 +22,7 @@ Extension developers can interact with the Magento_MediaGalleryUi module. For mo
 ### Layouts
 
 This module introduces the following layouts in the `view/adminhtml/layout` directory:
+
 - `media_gallery_index_index`
 - `media_gallery_media_index`
 
@@ -37,14 +38,18 @@ You can extend media gallery listing updates using the following configuration f
 - `standalone_media_gallery_listing`
 
 This module extends ui components:
+
 - `cms_block_listing`
 - `cms_page_listing`
 - `product_listing`
 
-For information about a UI component in Magento 2, see [Overview of UI components](http://devdocs.magento.com/guides/v2.4/ui_comp_guide/bk-ui_comps.html).
+For information about a UI component in Magento 2, see [Overview of UI components](https://developer.adobe.com/commerce/frontend-core/ui-components/).
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.4.x Release information](https://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.4.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
 
-[Learn more about New Media Gallery](https://docs.magento.com/user-guide/cms/media-gallery.html).
+[Learn more about New Media Gallery](https://experienceleague.adobe.com/en/docs/commerce-admin/content-design/wysiwyg/gallery/media-gallery).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.6.

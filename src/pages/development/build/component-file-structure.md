@@ -1,6 +1,8 @@
 ---
-title: Create your component file structure | Commerce PHP Extensions
+title: Component file structure | Commerce PHP Extensions
 description: Get started with component development by understanding the proper file structure. 
+keywords:
+  - Extensions
 ---
 
 # Create your component file structure
@@ -9,13 +11,13 @@ In this section, we go over the different file structures for component types. T
 
 ## Root directory location
 
-import Docs from '/src/pages/_includes/component-root.md'
+import Docs from '/src/_includes/component-root.md'
 
 <Docs />
 
 ## Module file structure
 
-A typical file structure for a [module](https://glossary.magento.com/module) can look like the following:
+A typical file structure for a module can look like the following:
 
 ![Module File Structure](../../_images/pdg-config-file-structure.png)
 
@@ -23,31 +25,47 @@ A typical file structure for a [module](https://glossary.magento.com/module) can
 
 Following are some common module directories:
 
-*  `Block`: contains [PHP](https://glossary.magento.com/php) view classes as part of Model View Controller(MVC) vertical implementation of module logic.
-*  `Controller`: contains PHP controller classes as part of MVC vertical implementation of module logic.
-*  `etc`: contains configuration files; in particular, `module.xml`, which is required.
-*  `Model`: contains PHP model classes as part of MVC vertical implementation of module logic.
-*  `Setup`: contains classes for module database structure and data setup which are invoked when installing or upgrading.
-*  `ViewModel`: contains PHP model classes as part of a model-view-viewmodel (MVVM) implementation. It allows developers to offload features and business logic from block classes into separate classes that are easier to maintain, test, and reuse.
+* `Block`: contains PHP view classes as part of Model View Controller(MVC) vertical implementation of module logic.
+* `Controller`: contains PHP controller classes as part of MVC vertical implementation of module logic.
+* `etc`: contains configuration files; in particular, `module.xml`, which is required.
+* `Model/ResourceModel/Colletions`: contains PHP model classes as part of MVC vertical implementation of module logic.
+* `Setup`: contains classes for module database structure and data setup which are invoked when installing or upgrading.
+* `ViewModel`: contains PHP model classes as part of a model-view-viewmodel (MVVM) implementation. It allows developers to offload features and business logic from block classes into separate classes that are easier to maintain, test, and reuse.
+
+### Model file structure
+
+The directory structure for the ORM follows the MVC pattern:
+
+```tree
+├── Model
+│   ├── ResourceModel
+│     └──  ModelName/Collection
+```
+
+Model directories include:
+
+* `Model`: Each file is responsible for defining the behavior, properties, and interactions related to a specific entity.
+* `ResourceModel`: contains files that handle the interaction with the database or data storage backend for the corresponding models. These classes abstract the database operations and provide a convenient interface for CRUD (Create, Read, Update, Delete) operations on the associated entities.
+* `ModelName/Collection`: contains files that define collections of entities. Collections provide a way to work with sets of data or multiple instances of a model simultaneously. These classes offer methods for querying, filtering, and manipulating groups of records from the database.
 
 ### Additional directories
 
-Additional folders can be added for configuration and other ancillary functions for items like [plugin-ins](../components/plugins.md), localization, and [layout](https://glossary.magento.com/layout) files.
+Additional folders can be added for configuration and other ancillary functions for items like [plugin-ins](../components/plugins.md), localization, and layout files.
 
-*  `Api`: contains any PHP classes exposed to the [API](https://glossary.magento.com/api).
-*  `Console`: contains CLI commands. For more info, see [Add CLI commands](../cli-commands/custom.md).
-*  `Cron`: contains cron job definitions.
-*  `CustomerData`: contains section files.
-*  `Helper`: contains aggregated functionality.
-*  `i18n`: contains localization files.
-*  `Observer`: contains files for executing commands from the listener.
-*  `Plugin`: contains any needed [plug-ins](../components/plugins.md).
-*  `UI`: contains data generation files.
-*  `view`: contains view files, including static view files, design templates, email templates, and layout files.
+* `Api`: contains any PHP classes exposed to the API.
+* `Console`: contains CLI commands. For more info, see [Add CLI commands](../cli-commands/custom.md).
+* `Cron`: contains cron job definitions.
+* `CustomerData`: contains section files.
+* `Helper`: contains aggregated functionality.
+* `i18n`: contains localization files.
+* `Observer`: contains files for executing commands from the listener.
+* `Plugin`: contains any needed [plug-ins](../components/plugins.md).
+* `UI`: contains data generation files.
+* `view`: contains view files, including static view files, design templates, email templates, and layout files.
 
 ## Theme file structure
 
-A typical [theme](https://glossary.magento.com/theme) file structure can look like the following:
+A typical theme file structure can look like the following:
 
 ```tree
 ├── composer.json
@@ -93,7 +111,7 @@ Typical theme directories are:
 *  `etc`: Contains configuration files such as the `view.xml` file which contains image configurations for all images and thumbnails.
 *  `i18n`: [Translation dictionaries](https://developer.adobe.com/commerce/frontend-core/guide/translations/#m2devgde-xlate-dictionaries), if any.
 *  `media`: Theme preview images (screen capture of your theme) can be put in here.
-*  `web`: Optional directory that contains [static files](https://glossary.magento.com/static-files) organized into the following subdirectories:
+*  `web`: Optional directory that contains static files organized into the following subdirectories:
 
    *  `css/source`: Contains a theme's `less` configuration files that invoke mixins for global elements from the [UI library](https://developer.adobe.com/commerce/frontend-core/guide/css/ui-library/), and the `theme.less` file that overrides the default variables values.
    *  `css/source/lib`: Contains view files that override the [UI library](https://developer.adobe.com/commerce/frontend-core/guide/css/ui-library/) files stored in `lib/web/css/source/lib`.

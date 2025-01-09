@@ -1,6 +1,6 @@
 ---
 title: GiftCardRequisitionList
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_GiftCardRequisitionList
@@ -23,4 +23,7 @@ The Magento_GiftCardRequisitionList module has a dependency on the Magento_Requi
 
 ## Additional information
 
-You can track [backward incompatible changes made in a Magento B2b mainline after the Magento 2.2 release](https://devdocs.magento.com/guides/v2.4/release-notes/b2b-release-notes.html).
+You can track [backward incompatible changes made in a Magento B2b mainline after the Magento 2.2 release](https://experienceleague.adobe.com/docs/commerce-admin/b2b/release-notes.html).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.0.

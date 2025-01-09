@@ -1,12 +1,13 @@
 ---
 title: Security
-description: README.md contents of the module from the source code
+description: Security management module
 ---
 
 # Security
 
 **Security** management module
 _Main features:_
+
 1. Added support for simultaneous admin user logins with ability to enable/disable the feature, review and disconnect the list of current logged in sessions
 2. Added password complexity configuration
 3. Enhanced security to prevent account takeover for sessions opened on public computers and similar:
@@ -16,3 +17,6 @@ _Main features:_
     * Change password link becomes invalid after the first use or after a configurable amount of time
     * Password/email change notifications are sent to both old and new email addresses
 4. Fixed: the password is not being reset until the new password is submitted via the form available by a one time link sent to the email address
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.7.

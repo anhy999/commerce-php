@@ -1,15 +1,17 @@
 ---
 title: Module Overview | Commerce PHP Extensions
 description: Learn about the critical role that modules play in the Commerce framework.
+keywords:
+  - Extensions
 ---
 
 # Module overview
 
-A *module* is a logical group -- that is, a directory containing blocks, controllers, helpers, models -- that are related to a specific business feature. In keeping with Adobe's commitment to optimal modularity, a [module](https://glossary.magento.com/module) encapsulates one feature and has minimal dependencies on other modules.
+A *module* is a logical group -- that is, a directory containing blocks, controllers, helpers, models -- that are related to a specific business feature. In keeping with Adobe's commitment to optimal modularity, a module encapsulates one feature and has minimal dependencies on other modules.
 
-Modules and themes are the units of customization in Commerce. Modules provide business features, with supporting logic,  while themes strongly influence user experience and [storefront](https://glossary.magento.com/storefront) appearance. Both components have a life cycle that allows them to be installed, deleted, and disabled. From the perspective of both merchants and [extension](https://glossary.magento.com/extension) developers, modules are the central unit of Adobe Commerce and Magento Open Source framework (Commerce framework) organization.
+Modules and themes are the units of customization in Commerce. Modules provide business features, with supporting logic,  while themes strongly influence user experience and storefront appearance. Both components have a life cycle that allows them to be installed, deleted, and disabled. From the perspective of both merchants and extension developers, modules are the central unit of Adobe Commerce and Magento Open Source framework (Commerce framework) organization.
 
-The Commerce framework provides a set of core logic: [PHP](https://glossary.magento.com/php) code, libraries, and the basic functions that are inherited by the modules and other components.
+The Commerce framework provides a set of core logic: PHP code, libraries, and the basic functions that are inherited by the modules and other components.
 
 ## Purpose of a module
 
@@ -17,7 +19,7 @@ The purpose of a module is to provide specific product features by implementing 
 
 ## Module components
 
-A module is a directory that contains the PHP and [XML](https://glossary.magento.com/xml) files (blocks, controllers, helpers, models) that are related to a specific business feature, such as Shipping. Specifically, a module is composed of the following software components:
+A module is a directory that contains the PHP and XML files (blocks, controllers, helpers, models) that are related to a specific business feature, such as Shipping. Specifically, a module is composed of the following software components:
 
 -  [Themes](https://developer.adobe.com/commerce/frontend-core/guide/themes/)
 -  [Libraries](libraries.md)
@@ -41,7 +43,7 @@ Inside this folder, you will find all the code related to this module, including
 
 The following table shows the *recommended* location within the file system for specific components.
 
-(A [module](https://glossary.magento.com/module) must include a `registration.php` file in its root folder.)
+(A module must include a `registration.php` file in its root folder.)
 
 We refer to a component's root directory as the top-level directory in which you develop component code. Typically, this directory is located in one of the following directories relative to your Adobe Commerce or Magento Open Source root directory:
 
@@ -56,6 +58,6 @@ We refer to a component's root directory as the top-level directory in which you
 
 Developers, administrators, and anyone building an Adobe Commerce or Magento Open Source website will want to review all relevant topics surrounding their particular goals and use cases.
 
-See [PHP Developer Guide](https://developer.adobe.com/commerce/php/development/) for specific instructions on extending modules.
+See [PHP Developer Guide](/development/) for specific instructions on extending modules.
 
 See [Frontend Developer Guide](https://developer.adobe.com/commerce/frontend-core/guide/) for information on implementing themes and other components.

@@ -1,6 +1,6 @@
 ---
 title: GiftMessage
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_GiftMessage module
@@ -28,7 +28,7 @@ This module modifies the following tables in the database:
 - `sales_order` - adds column `gift_message_id`
 - `sales_order_item` - adds columns `gift_message_id` and `gift_message_available`
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -41,17 +41,19 @@ A lot of functionality in the module is on JavaScript, use [mixins](https://deve
 ### Events
 
 The module dispatches the following events:
+
 - `gift_options_prepare_items` event in the `\Magento\GiftMessage\Block\Message\Inline::getItems` method. Parameters:
     - `items` is a entityItems (`array` type)
 
 - `gift_options_prepare` event in the `\Magento\GiftMessage\Block\Message\Inline::isMessagesOrderAvailable` method. Parameters:
     - `entity` is an entity object
 
-For information about an event in Magento 2, see [Events and observers](http://devdocs.magento.com/guides/v2.4/extension-dev-guide/events-and-observers.html#events).
+For information about an event in Magento 2, see [Events and observers](https://developer.adobe.com/commerce/php/development/components/events-and-observers/#events).
 
 ### Layout
 
 This module introduces the following layouts in the `view/frontend/layout` and `view/adminhtml/layout` directories:
+
 - `view/adminhtml/layout`:
     - `sales_order_create_index`
     - `sales_order_create_load_block_data`
@@ -75,11 +77,11 @@ For more information about a layout in Magento 2, see the [Layout documentation]
 - `\Magento\GiftMessage\Api\CartRepositoryInterface`
     - get the gift message by cart ID for specified shopping cart
     - set the gift message for an entire shopping cart
-    
+
 - `\Magento\GiftMessage\Api\GuestCartRepositoryInterface`
     - get the gift message by cart ID for specified shopping cart
     - set the gift message for an entire shopping cart
-    
+
 #### Cart Item
 
 - `\Magento\GiftMessage\Api\GuestItemRepositoryInterface`
@@ -89,7 +91,7 @@ For more information about a layout in Magento 2, see the [Layout documentation]
 - `\Magento\GiftMessage\Api\ItemRepositoryInterface`
     - get the gift message for a specified item in a specified shopping cart
     - set the gift message for a specified item in a specified shopping cart
-    
+
 #### Order
 
 - `\Magento\GiftMessage\Api\OrderItemRepositoryInterface`
@@ -101,9 +103,12 @@ For more information about a layout in Magento 2, see the [Layout documentation]
 - `\Magento\GiftMessage\Api\OrderItemRepositoryInterface`
     - get the gift message for a specified item in a specified order
     - set the gift message for a specified item in a specified order
-    
-For information about a public API in Magento 2, see [Public interfaces & APIs](http://devdocs.magento.com/guides/v2.4/extension-dev-guide/api-concepts.html).
+
+For information about a public API in Magento 2, see [Public interfaces & APIs](https://developer.adobe.com/commerce/php/development/components/api-concepts/).
 
 ## Additional information
 
-[Learn more about Gift Options and Gift Message](https://docs.magento.com/user-guide/sales/gift-options.html).
+[Learn more about Gift Options and Gift Message](https://experienceleague.adobe.com/docs/commerce-admin/stores-sales/point-of-purchase/cart/cart-configuration.html#gift-options).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.6.

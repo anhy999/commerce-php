@@ -1,6 +1,6 @@
 ---
 title: MediaStorage
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_MediaStorage module
@@ -14,13 +14,13 @@ Before installing this module, note that the Magento_MediaStorage is dependent o
 - `Magento_Catalog`
 - `Magento_Theme`
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Structure
 
 `App/` - the directory that contains launch application entry point.
 
-For information about a typical file structure of a module in Magento 2, see [Module file structure](http://devdocs.magento.com/guides/v2.4/extension-dev-guide/build/module-file-structure.html#module-file-structure).
+For information about a typical file structure of a module in Magento 2, see [Module file structure](https://developer.adobe.com/commerce/php/development/build/component-file-structure/#module-file-structure).
 
 ## Extensibility
 
@@ -42,5 +42,8 @@ Extension developers can interact with the Magento_MediaStorage module. For more
 
 More information can get at articles:
 
-- [Learn how to configure Media Storage Database](https://docs.magento.com/user-guide/system/media-storage-database.html).
+- [Learn how to configure Media Storage Database](https://experienceleague.adobe.com/en/docs/commerce-admin/content-design/wysiwyg/storage/media-storage-database).
 - [Learn how to Resize catalog images](https://developer.adobe.com/commerce/frontend-core/guide/themes/configure/#resize-catalog-images)
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.6.

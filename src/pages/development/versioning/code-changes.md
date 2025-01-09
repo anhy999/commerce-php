@@ -1,6 +1,8 @@
 ---
 title: Codebase Changes | Commerce PHP Extensions
 description: Differentiate between public and private code changes and identify API, customization points, and deprecations.
+keywords:
+  - Extensions
 ---
 
 # Code changes
@@ -10,7 +12,7 @@ Every release includes a change in the codebase. The scope of the change determi
 ## Public vs private code changes
 
 A module's codebase consists of public and private code.
-Public code includes Public [API](https://glossary.magento.com/api)(indicated by the `@api` docblock tag) and Public Customization Points.
+Public code includes Public API(indicated by the `@api` docblock tag) and Public Customization Points.
 All other code is considered private.
 
 Changes in public code always trigger MINOR or MAJOR version increases.
@@ -179,6 +181,6 @@ As the framework improves, this list should be reduced and, eventually, eliminat
 
 **Related topics:**
 
-*  [Release policy](https://devdocs.magento.com/release/policy/)
-*  [Upcoming releases](https://devdocs.magento.com/release/)
+*  [Release policy](https://experienceleague.adobe.com/en/docs/commerce-operations/release/planning/versioning-policy)
+*  [Upcoming releases](https://experienceleague.adobe.com/en/docs/commerce-operations/release/planning/schedule)
 *  [Backward compatibility policy](https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/)

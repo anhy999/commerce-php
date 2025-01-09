@@ -1,6 +1,6 @@
 ---
 title: CompanyShipping
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_CompanyShipping module
@@ -38,3 +38,6 @@ The following directory contains extensible UI components:
 * `Magento\CompanyShipping\view\frontend\ui_component` - company form
 
 For more information, see [UI Form Component](https://developer.adobe.com/commerce/frontend-core/ui-components/components/form/).
+
+<InlineAlert slots="text" />
+The version of this module is 1.4.0.

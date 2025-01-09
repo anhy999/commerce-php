@@ -1,17 +1,20 @@
 ---
 title: Cross-Site Scripting (XSS) | Commerce PHP Extensions
 description: Implement cross-site-scripting (XSS) prevention strategies when developing Adobe Commerce and Magento Open Source components.
+keywords:
+  - Extensions
+  - Security
 ---
 
 # Cross-site scripting (XSS)
 
-[Cross-site scripting][], or XSS, is a security vulnerability that can be found in web applications. This vulnerability allows attackers to inject malicious code/styles into a web page viewed by users. [Extension](https://glossary.magento.com/extension) developers should be aware of these vulnerabilities to avoid introducing them in their code.
+[Cross-site scripting][], or XSS, is a security vulnerability that can be found in web applications. This vulnerability allows attackers to inject malicious code/styles into a web page viewed by users. Extension developers should be aware of these vulnerabilities to avoid introducing them in their code.
 
 There are three main types of XSS vulnerabilities:
 
--  **Persisted XSS** - In this type of vulnerability, the source of unvalidated data comes from the database or [Backend](https://glossary.magento.com/backend) permanent store.
+-  **Persisted XSS** - In this type of vulnerability, the source of unvalidated data comes from the database or Backend permanent store.
 -  **Reflected (non-persistent) XSS** - This type of vulnerability occurs when data provided by a web client is used immediately by server-side scripts to parse and display a page to a user without properly sanitizing the request.
--  **DOM XSS** - For this vulnerability, the malicious data does not touch the web server. Rather, it is being reflected by the [JavaScript](https://glossary.magento.com/javascript) code, fully on the client side.
+-  **DOM XSS** - For this vulnerability, the malicious data does not touch the web server. Rather, it is being reflected by the JavaScript code, fully on the client side.
 
 ## Preventing XSS
 
@@ -57,14 +60,14 @@ When using the `\Magento\Framework\Escaper` or `$escaper`:
 **The following code sample illustrates XSS-safe output in templates:**
 
 ```php
-<?php echo $block->getTitleHtml() ?>
-<?php echo $block->getHtmlTitle() ?>
-<?php echo $escaper->escapeHtml($block->getTitle()) ?>
-<?php echo (int)$block->getId() ?>
-<?php echo count($var); ?>
-<?php echo 'some text' ?>
-<?php echo "some text" ?>
-<a href="<?php echo $escaper->escapeUrl($block->getUrl()) ?>"><?php echo $block->getAnchorTextHtml() ?></a>
+<?= $block->getTitleHtml() ?>
+<?= $block->getHtmlTitle() ?>
+<?= $escaper->escapeHtml($block->getTitle()) ?>
+<?= (int)$block->getId() ?>
+<?= count($var); ?>
+<?= 'some text' ?>
+<?= "some text" ?>
+<a href="<?= $escaper->escapeUrl($block->getUrl()) ?>"><?= $block->getAnchorTextHtml() ?></a>
 ```
 
 **When to use Escaper methods:**
@@ -98,10 +101,10 @@ If a tag is allowed, the following attributes will not be escaped: `id`, `class`
 `embed`, `iframe`, `video`, `source`, `object`, `audio`, `script` and `img` tags are not allowed, regardless of the content of this array.
 
 ```php
- <span class="label"><?php echo $escaper->escapeHtml($block->getLabel()) ?></span>
+ <span class="label"><?= $escaper->escapeHtml($block->getLabel()) ?></span>
   // Escaping translation
   <div id='my-element'>
-      <?php echo $escaper->escapeHtml(__('Only registered users can write reviews. Please <a href="%1">Sign in</a> or <a href="%2">create an account</a>', $block->getLoginUrl(), $block->getCreateAccountUrl()), ['a']) ?>
+      <?= $escaper->escapeHtml(__('Only registered users can write reviews. Please <a href="%1">Sign in</a> or <a href="%2">create an account</a>', $block->getLoginUrl(), $block->getCreateAccountUrl()), ['a']) ?>
   </div>
 ```
 
@@ -192,8 +195,8 @@ To check your .phtml template for XSS vulnerabilities, use the _Magento2.Securit
 This sniff finds all _echo_ calls in PHTML-templates and determines if the output is properly escaped.
 It covers the following cases:
 
--  `/_ @noEscape _/` before output. Output does not require escaping. Test is green.
--  `/_ @escapeNotVerified _/` before output. Output escaping is not checked and should be verified. Test is green.
+-  `/* @noEscape */` before output. Output does not require escaping. Test is green.
+-  `/* @escapeNotVerified */` before output. Output escaping is not checked and should be verified. Test is green.
 -  Methods which contain "html" in their names (for example echo $object->{suffix}Html{postfix}()). Data is ready for the HTML output. Test is green.
 -  AbstractBlock methods `escapeHtml`, `escapeHtmlAttr`, `escapeUrl`, `escapeJs` are allowed. Test is green.
 -  Type casting and php function `count()` are allowed (for example `echo (int)$var`, `(bool)$var`, `count($var)`). Test is green.

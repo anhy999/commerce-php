@@ -1,6 +1,6 @@
 ---
 title: MediaGalleryApi
-description: README.md contents of the module from the source code
+description: Magento module responsible for media gallery asset attributes storage and management
 ---
 
 # Magento_MediaGalleryApi module
@@ -9,7 +9,7 @@ The Magento_MediaGalleryApi module serves as application program interface (API)
 
 ## Installation details
 
-For information about module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -39,7 +39,7 @@ Extension developers can interact with the Magento_MediaGalleryApi module. For m
 
 - `\Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface`:
     - get media gallery assets by id attribute
-    
+
 - `\Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface`:
     - get media gallery assets by paths in media storage
 
@@ -58,8 +58,11 @@ Extension developers can interact with the Magento_MediaGalleryApi module. For m
 - `\Magento\MediaGalleryApi\Api\SearchAssetsInterface`:
     - search media gallery assets
 
-For information about a public API in Magento 2, see [Public interfaces & APIs](http://devdocs.magento.com/guides/v2./extension-dev-guide/api-concepts.html).
+For information about a public API in Magento 2, see [Public interfaces & APIs](https://developer.adobe.com/commerce/php/development/components/api-concepts/).
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.4.x Release information](https://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.4.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 101.0.6.

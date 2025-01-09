@@ -1,11 +1,13 @@
 ---
 title: Serialize Library | Commerce PHP Extensions
 description: Use this library in your Adobe Commerce and Magento Open Source components to manage the serialization and unserialization of data.
+keywords:
+  - Extensions
 ---
 
 # Serialize library
 
-This [library](https://glossary.magento.com/library) provides a secure way of serializing and unserializing strings, integers, floats, booleans, and arrays.
+This library provides a secure way of serializing and unserializing strings, integers, floats, booleans, and arrays.
 
 Magento's Serialize library provides the `Magento\Framework\Serialize\SerializerInterface` and the Json and Serialize implementations for serializing data.
 

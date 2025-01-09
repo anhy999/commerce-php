@@ -1,6 +1,8 @@
 ---
 title: Create a Custom Indexer | Commerce PHP Extensions
 description: Learn how to create custom indexers for Adobe Commerce and Magento Open Source.
+keywords:
+  - Extensions
 ---
 
 # Create a custom indexer
@@ -18,7 +20,7 @@ To implement your own indexer, add the following code in your module:
 Your custom indexer class should implement [\Magento\Framework\Indexer\ActionInterface](https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/Indexer/ActionInterface.php), and the indexer should be able to perform three types of operations:
 
 *  Row reindex: processing a single entry from a dictionary; responsibility of `executeRow($id)`
-*  List reindex: processing a set of dictionary entries; responsibility of `executeList($ids)`, where `$ids` is an array of [entity](https://glossary.magento.com/entity) IDs
+*  List reindex: processing a set of dictionary entries; responsibility of `executeList($ids)`, where `$ids` is an array of entity IDs
 *  Full reindex: processing all entities from a specific dictionary; responsibility of `executeFull()`
 
 ### Indexer configuration
@@ -75,7 +77,7 @@ For example:
 </config>
 ```
 
-All indexers related to a [module](https://glossary.magento.com/module) should be declared in one file.
+All indexers related to a module should be declared in one file.
 
 ### MView configuration
 
@@ -166,7 +168,7 @@ Finally, declare the indexer view (`merchandizing_popular_order`) that tracks sa
 
 These settings start `<VendorName>\Merchandizing\Model\Indexer\Popular::execute` method every time an order is changed.
 
-After this, please refresh the cache and go to **System** > Tools > [**Index Management**](https://docs.magento.com/m2/ce/user_guide/system/index-management.html) through the Admin to verify the custom indexer result.
+After this, please refresh the cache and go to **System** > Tools > [**Index Management**](https://experienceleague.adobe.com/en/docs/commerce-admin/systems/tools/index-management) through the Admin to verify the custom indexer result.
 
 ![Custom indexer modes](../../../_images/custom-indexer-magento2.jpg)
 

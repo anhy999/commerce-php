@@ -1,9 +1,13 @@
 ---
 title: Response Handler
 description: Learn how to process payment provider responses.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -13,13 +17,13 @@ Response Handler is a component of the Adobe Commerce payment provider gateway, 
 
 Typically, the response requires one of the following actions:
 
--  Modify the [order status](https://glossary.magento.com/order-status)
+-  Modify the order status
 
 -  Save information that was provided in a transaction response
 
 -  Send an email
 
-The response handler only modifies the order state, based on the [payment gateway](https://glossary.magento.com/payment-gateway) response. It does not perform any other required actions.
+The response handler only modifies the order state, based on the payment gateway response. It does not perform any other required actions.
 
 ## Interface
 

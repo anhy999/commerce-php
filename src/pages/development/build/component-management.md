@@ -1,13 +1,15 @@
 ---
 title: Enable or disable a component | Commerce PHP Extensions
 description: Manage Adobe Commerce and Magento Open Source components using the command-line interface.
+keywords:
+  - Extensions
 ---
 
 # Enable or disable a component
 
 After you have built the component and are ready to enable it in your environment, do the following:
 
-1. Disable the [cache](https://glossary.magento.com/cache) under `System->Cache Management`.
+1. Disable the cache under `System->Cache Management`.
 1. Enter the following in the command line:
 
    ```bash
@@ -54,4 +56,4 @@ To disable a component, enter the following at the command line:
 bin/magento module:disable --clear-static-content Component_Name
 ```
 
-For more on enabling and disabling components, see [enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html#instgde-cli-subcommands-enable-disable).
+For more on enabling and disabling components, see [enable or disable modules](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/tutorials/manage-modules#instgde-cli-subcommands-enable-disable).

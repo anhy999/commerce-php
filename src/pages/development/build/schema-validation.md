@@ -1,11 +1,13 @@
 ---
 title: URN Schema Validation | Commerce PHP Extensions
 description: Learn about uniform resource name (URN) schema validation for Adobe Commerce and Magento Open Source components.
+keywords:
+  - Extensions
 ---
 
 # URN schema validation
 
-Each [module](https://glossary.magento.com/module) can contain XSD files for [XML](https://glossary.magento.com/xml) validation.
+Each module can contain XSD files for XML validation.
 
 The application uses [Uniform Resource Names](https://en.wikipedia.org/wiki/Uniform_Resource_Name) (URNs) to reference XML schema declarations.
 
@@ -61,4 +63,4 @@ libxml_set_external_entity_loader(['Magento\Framework\Config\Dom\UrnResolver', '
 
 <InlineAlert variant="info" slots="text"/>
 
-The relative path to other XSDs cannot be used from inside the XSD file, because the [entity](https://glossary.magento.com/entity) loader fails to resolve the relative path.
+The relative path to other XSDs cannot be used from inside the XSD file, because the entity loader fails to resolve the relative path.

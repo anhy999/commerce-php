@@ -1,11 +1,14 @@
 ---
 title: Add a New Input Form to Checkout | Commerce PHP Extensions
 description: Follow this tutorial to create a new input form in the Adobe Commerce and Magento Open Source checkout experience.
+keywords:
+  - Checkout
+  - Extensions
 ---
 
 # Add a new input form to checkout
 
-This topic describes how to add a custom input form (implemented as a UI component) to the [Checkout](https://glossary.magento.com/checkout) page.
+This topic describes how to add a custom input form (implemented as a UI component) to the Checkout page.
 
 ![The input form with four fields](../../../_images/tutorials/how_checkout_form.png)
 
@@ -95,7 +98,7 @@ Example:
 
 Certain default checkout templates declare regions where additional content can be inserted. You can add your custom form in any of these regions. These regions are provided with corresponding comments in the default Checkout page layout file `<Checkout_module_dir>/view/frontend/layout/checkout_index_index.xml`.
 
-Also you locate the regions in the `.html` templates of the blocks used in this [layout](https://glossary.magento.com/layout) file.
+Also you locate the regions in the `.html` templates of the blocks used in this layout file.
 For example, the shipping JS component (see `<Magento_Checkout_module_dir>/view/frontend/web/template/shipping.html`) provides the `before-form` region and corresponding UI container.
 
 Any content added here is rendered before the Shipping Address form on the Shipping Information step. To add content to this region, create a `checkout_index_index.xml` layout update in the `<your_module_dir>/view/frontend/layout/`.
@@ -159,7 +162,7 @@ If you modify your custom `.html` template after it was applied on the store pag
 
 ### Static forms
 
-The term static refers to the forms where all the fields are already known/predefined and do not depend on any settings in the [Admin](https://glossary.magento.com/admin). Compare to [dynamic forms](#dynamically-defined-forms).
+The term static refers to the forms where all the fields are already known/predefined and do not depend on any settings in the Admin. Compare to [dynamic forms](#dynamically-defined-forms).
 
 The fields of static forms are not generated dynamically, so they can be defined in a layout.
 

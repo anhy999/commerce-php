@@ -1,6 +1,6 @@
 ---
 title: AdobeStockAdminUi
-description: README.md contents of the module from the source code
+description: Magento module responsible for the admin panel UI implementation
 ---
 
 # Magento_AdobeStockAdminUi module
@@ -15,4 +15,7 @@ Extension developers can interact with the Magento_AdobeStockAdminUi module. For
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.3.x Release information](https://devdocs.magento.com/guides/v2.3/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.3.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 1.3.4.

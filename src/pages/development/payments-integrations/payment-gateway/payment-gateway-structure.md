@@ -1,9 +1,13 @@
 ---
 title: Payment provider gateway structure
 description: This is a structural overview of the basic components of the Adobe Commerce payment provider gateway.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -13,7 +17,7 @@ The following diagram shows the basic components of the Adobe Commerce payment p
 
 ![Payment Gateway Structure](../../../_images/pg_structure.png)
 
-The interaction between the [payment gateway](https://glossary.magento.com/payment-gateway) components looks like following:
+The interaction between the payment gateway components looks like following:
 
 ![Payment Gateway Structure](../../../_images/pg_internal_flow.png)
 

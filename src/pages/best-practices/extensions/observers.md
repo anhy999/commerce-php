@@ -1,6 +1,8 @@
 ---
 title: Observers Best Practices | Commerce PHP Extensions
 description: Review best practices about observers when coding Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Extensions
 ---
 
 # Observers best practices
@@ -11,7 +13,7 @@ We encourage you to follow these best practices aimed towards reducing problems 
 
 ## Make your observer efficient
 
-Try to keep your observer small and efficient by avoiding complex computations, if possible. This is especially important when your observer is listening to an [event](https://glossary.magento.com/event) that is frequently dispatched. Having complex computations in your observer can slow down application processes.
+Try to keep your observer small and efficient by avoiding complex computations, if possible. This is especially important when your observer is listening to an event that is frequently dispatched. Having complex computations in your observer can slow down application processes.
 
 ## Do not include business logic
 

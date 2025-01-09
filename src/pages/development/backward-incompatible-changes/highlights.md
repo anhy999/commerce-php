@@ -1,11 +1,457 @@
 ---
-title: Backward-incompatible changes highlights | Commerce PHP Extensions
-description: Learn about major changes in Adobe Commerce and Magento Open Source releases that require detaile dexplanation and special instructions to ensure your custom extension continues working.
+title: Backward-incompatible changes | Commerce PHP Extensions
+description: Learn about major changes in Adobe Commerce and Magento Open Source releases that require action to ensure your custom extension continues working.
+keywords:
+  - Extensions
 ---
 
 # Backward-incompatible changes highlights
 
-This page highlights backward-incompatible changes between Adobe Commerce and Magento Open Source releases that have a major impact and require detailed explanation and special instructions to ensure third-party modules continue working. High-level reference information for all backward-incompatible changes in each release are documented in [Backward incompatible changes reference](reference.md).
+This page highlights backward-incompatible changes between Adobe Commerce and Magento Open Source releases that have a major impact and require detailed explanation and special instructions to ensure third-party modules continue working. High-level reference information for all backward-incompatible changes in each release is documented in the [reference](reference.md) section.
+
+## 2.4.8-beta
+
+The following major backward-incompatible changes were introduced in the 2.4.8-beta Adobe Commerce and Magento Open Source releases:
+
+* Upgraded `monolog/monolog` dependency
+* Updated default value for 2FA OTP window
+* New 2FA system parameter
+* New unique EAV key
+
+### Upgraded monolog/monolog dependency
+
+The `monolog/monolog` third-party dependency was updated to the latest stable version (3.x) to enhance platform stability and performance.<!--AC-12689-->
+
+**Action Required:**
+
+This change affects custom code and extensions that use or overwrite the `protected function write(array $record): void` method for exception logging. The argument type needs to be updated to `LogRecord $record` instead of `array $record`. For example:
+
+```php
+protected function write(LogRecord $record): void
+```
+
+### Updated default value for 2FA OTP window
+
+The `spomky-labs/otphp` library has changed the way that the one-time password (OTP) window is calculated for two factor authentication (2FA). Previously, it used a "window" multiplier, but now it uses a "leeway" value in seconds. This change ensures that the configuration is up to date with the latest library behavior.<!--AC-12129-->
+
+Merchants and customers using the Google Authenticator 2FA provider must reset the configuration value for the OTP window. The command has changed from `bin/magento config:set twofactorauth/google/otp_window VALUE` to `bin/magento config:set twofactorauth/google/leeway VALUE`. This change aligns with the updated `spomky-labs/otphp` library, which uses a default expiration period of 30 seconds.
+
+To set the new default value:
+
+```bash
+bin/magento config:set twofactorauth/google/leeway 29
+```
+
+The following module is affected by this change:
+
+* [Magento_TwoFactorAuth](/module-reference/module-two-factor-auth/)
+
+### New 2FA system parameters
+
+New system parameters have been added to enable rate limiting on two-factor authentication (2FA) one-time password (OTP) validation:<!--AC-11945-->
+
+```php
+...    
+    /**
+     * Config path for the 2FA Attempts
+     */
+    private const XML_PATH_2FA_RETRY_ATTEMPTS = 'twofactorauth/general/twofactorauth_retry';
+
+    /**
+     * Config path for the 2FA Attempts
+     */
+    private const XML_PATH_2FA_LOCK_EXPIRE = 'twofactorauth/general/auth_lock_expire';
+...
+```
+
+These paramters correspond to the following system configuration options in the Admin:
+
+  * **Retry attempt limit for Two-Factor Authentication**
+  * **Two-Factor Authentication lockout time (seconds)**
+
+  Adobe advises setting a threshold for 2FA OTP validation to limit the number of retry attempts to mitigate brute-force attacks. See [Security > 2FA](https://experienceleague.adobe.com/en/docs/commerce-admin/config/security/2fa) in the _Configuration Reference Guide_ for more information.
+
+The following module is affected by this change:
+
+* [Magento_TwoFactorAuth](/module-reference/module-two-factor-auth/)
+
+### New unique EAV key
+
+Added a unique key on the column pair (`option_id`, `store_id`) on the `eav_attribute_option_value` table.<!--AC-6984-->
+
+The following module is affected by this change:
+
+* [Magento_EAV](/module-reference/module-eav/)
+
+## 2.4.7
+
+The following major backward-incompatible changes were introduced in the 2.4.7 Adobe Commerce and Magento Open Source releases:
+
+* API integration: FedEx SOAP
+* API integration: UPS SOAP
+* Default behavior for `isEmailAvailable` API
+* Elasticsearch 7 deprecation
+* Fixes to resolve compatibility issues with Symfony
+* New block class for subresource integrity verification
+* New interface and method for ApplicationServer module
+* New method and an optional parameter for multicoupons
+* New method in `Config/Type/System`
+* New method for encryption key generation
+* New SKU validation in inventory source items API
+* New system configuration for full-page caching
+* New system configuration for limiting coupon generation
+* New system configuration for payment information rate limiting
+* New system configuration validation for Two Factor Authentication `otp_window` value
+
+### API integration: FedEx SOAP
+
+The Commerce FedEx SOAP API integration has been migrated to the new FedEx REST API. The FedEx Web Services for Tracking API was retired on May 15, 2024. All previous FedEx SOAP APIs have been removed from the Adobe Commerce and Magento Open Source 2.4.7 code base.
+
+This change affects custom code and extensions that use the SOAP APIs. You must update your code to use the REST APIs.
+
+You must generate REST credentials (Account Number, API Key, and Secret Key) from the FedEx developer portal and add those credentials to the Admin by going to **Stores** > **Configuration** > **Sales** > **Shipping/Delivery Methods** > **FedEx**.
+
+The following module is affected by this change:
+
+* [Magento_Fedex](/module-reference/module-fedex/)
+
+### API integration: UPS SOAP
+
+The Commerce UPS SOAP API integration has been migrated to the new UPS REST API to support updates that UPS is making to their [API security model](https://developer.ups.com/oauth-developer-guide). UPS is implementing an OAuth 2.0 security model (bearer tokens) for all APIs. All previous Commerce UPS SOAP APIs have been removed from the Adobe Commerce and Magento Open Source 2.4.7 code base.
+
+You must generate REST credentials (Account Number, API Key, and Secret Key) from the UPS developer portal and update those credentials to the Admin by going to **Stores** > **Configuration** > **Sales** > **Shipping/Delivery Methods** > **UPS**.
+
+The following module is affected by this change:
+
+* [Magento_Ups](/module-reference/module-ups/)
+
+### Default behavior for `isEmailAvailable` API
+
+The default behavior of the [`isEmailAvailable`](https://developer.adobe.com/commerce/webapi/graphql/schema/customer/queries/is-email-available/) GraphQL query and ([`V1/customers/isEmailAvailable`](https://adobe-commerce.redoc.ly/2.4.6-admin/tag/customersisEmailAvailable/#operation/PostV1CustomersIsEmailAvailable)) REST endpoint has changed. By default, the API now always returns `true`.
+The new default behavior also affects the checkout workflow for guests that do not realize they already have an account. Previously, by default, when a guest supplied an email address that matched an existing customer account, they were prompted to sign in. Now, they are no longer prompted to sign in.
+
+Merchants can restore the original default behavior of the `isEmailAvailable` API and checkout flow by setting the **Stores > Configuration > Sales > Checkout > Enable Guest Checkout Login field** to **Yes**. However, doing this can expose customer information to unauthenticated users.
+
+### Elasticsearch 7 deprecation
+
+This change removes the `Magento_Elasticsearch` module (for Elasticsearch 5) and adds support for Elasticsearch 8. The `Magento_Elasticsearch7` module is being deprecated because Elasticsearch 7 reached end-of-life in August 2023. However, it is still the default option for 2.4.7.
+
+The `Magento_Elasticsearch8` module is not currently supported because of backward-incompatible changes in ES7 and ES8. It is available as a Composer metapackage only in 2.4.7 until the `Magento_Elasticsearch7` module is removed from the codebase.
+
+You can use the `Magento_Elasticsearch7` module or install the Magento_Elasticsearch8 module in 2.4.7.
+
+The following modules are affected by this change:
+
+* [Magento_Elasticsearch](/module-reference/module-elasticsearch/)
+* [Magento_ElasticsearchCatalogPermissions](/module-reference/module-elasticsearch-catalog-permissions/)
+* [Magento_Elasticsearch7](/module-reference/module-elasticsearch-7/)
+* [Magento_OpenSearch](/module-reference/module-open-search/)
+
+### Fixes to resolve compatibility issues with Symfony
+
+The return type was changed for the [`Magento\Framework\Console\Cli::getDefaultCommands`](https://eat.magento.com/ui/phpFqn?searchKey=TWFnZW50b1xGcmFtZXdvcmtcQ29uc29sZVxDbGk6OmdldERlZmF1bHRDb21tYW5kcw==) interface to provide compatibility with the latest Symfony 6.4 LTS version.
+
+Extension developers must define strict typing for return values in classes that use the changed interface: `Magento\Framework\Console\Cli::getDefaultCommands`.
+
+### New block class for subresource integrity verification
+
+A new block class was added (`Magento\Csp\Block\Sri\Hashes`) marked with the `@api` annotation to support [subresource integrity](../security/subresource-integrity.md) verification. This ensures that all scripts executed on payment pages and the Admin have an integrity attribute so that no unauthorized scripts can run. You must add integrity attributes to all custom and remote JavaScript resources.
+
+The following module is affected by this change:
+
+* [Magento_Csp](/module-reference/module-csp/)
+
+### New interface and method for ApplicationServer module
+
+State management has been enabled for all GraphQL APIs (excluding B2B and service-related processes). The 2.4.7 release introduces a new PHP application server that is implemented on a Swoole PHP extension. The [ApplicationServer](https://experienceleague.adobe.com/en/docs/commerce-operations/performance-best-practices/concepts/application-server) module enables Adobe Commerce to maintain state between Commerce GraphQL API requests and eliminates the need for request bootstrapping. By sharing application state among processes, API requests become significantly more efficient, and API response times potentially decrease by 50 to 60 milliseconds.
+
+The `ResetAfterRequestInterface` interface and `_resetState()` method were added to enable the PHP application server. The `__debugInfo()` method was also added to fix issues with `var_dump` calls.
+
+No action for merchants or extension developers is necessary.
+
+The following modules are affected by this change:
+
+* [Magento_Authorization](/module-reference/module-authorization/)
+* [Magento_Config](/module-reference/module-config/)
+* [Magento_Customer](/module-reference/module-customer/)
+* [Magento_ResourceConnections](/module-reference/module-resource-connections/)
+
+### New method and an optional parameter for multicoupons
+
+The following changes were introduced to implement the multicoupon functionality in the [SalesRule](/module-reference/module-sales-rule/) module:
+
+* Optional parameter added to  `Magento\SalesRule\Model\ResourceModel\Rule\Collection::setValidationFilter`
+* New method introduced: `Magento\SalesRule\Model\Validator::initFromQuote`
+
+All changes have been done in a way to minimize any impact to extensions and customizations. However, there are risks of conflict if an extension or customization extends the following:
+
+* `Magento\SalesRule\Model\ResourceModel\Rule\Collection::setValidationFilter` and adds a parameter to this method.
+* `Magento\SalesRule\Model\Validator` and introduces a method with the same name `initFromQuote`.
+
+The following module is affected by this change:
+
+* [Magento_SalesRule](/module-reference/module-sales-rule/)
+
+### New method for encryption key generation
+
+This change improves the security of encrypted user data. You must [reset the encryption key](https://experienceleague.adobe.com/docs/commerce-admin/systems/security/encryption-key.html) and set the **Auto-generate** option to `Yes`. After resetting the encryption key, all credit card data and cache files are re-encrypted with the new key.
+
+The following files are affected by this change:
+
+* [`lib/internal/Magento/Framework/Config/ConfigOptionsListConstants.php`](https://github.com/magento/magento2/blob/2.4-develop/lib/internal/Magento/Framework/Config/ConfigOptionsListConstants.php)—A new method was added to increase the entropy of encryption keys generated by the framework for stored credit card and cache data.
+* [`lib/internal/Magento/Framework/Math/Random.php`](https://github.com/magento/magento2/blob/2.4-develop/lib/internal/Magento/Framework/Math/Random.php)—A new constant was added to prefix base64-encoded encryption keys for use in `env.php` files.
+
+### New method in `Config/Type/System`
+
+The `bin/magento cache:clean config` CLI command, and its Admin UI equivalent, now pre-warm the config cache (when config cache is enabled) in order to reduce the lock time after cleaning the config cache. This reduces the downtime for large configurations that take significant time to generate the config cache.
+
+We've also changed the configuration save so that it no longer cleans the `config_scopes` cache (when config cache is enabled). Config saving also pre-warms the config cache now, which also reduces the lock time for large configurations. Cleaning the config cache after saving configuration changes is still recommended.
+
+No action for merchants or extension developers is necessary because the general functionality is the same. Only the order of generating the config cache, serializing, and encrypting (before lock instead of after) was changed.
+
+The following module is affected by this change:
+
+* [Magento_Config](/module-reference/module-config/)
+
+### New SKU validation in inventory source items API
+
+Payload containing SKU will now be validated for leading and trailing spaces in the `rest/V1/inventory/source-items` API.
+
+### New system configuration full-page caching
+
+This change improves the security and performance of how the framework resolves [Varnish Edge Side Includes (ESI)](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cache/use-varnish-esi.html) for [full-page caching](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cache/configure-varnish-commerce.html).
+
+The `{BASE-URL}/page_cache/block/esi HTTP` endpoint supports unrestricted, dynamically loaded content fragments from Commerce layout handles and block structures.
+
+The new **Handles params size** system configuration setting limits the `handles` parameter for the endpoint to `100` by default. You can change the default in the Admin by going to **Stores** > _Settings_ > **Configuration** > **Advanced** > **System** > **Full Page Cache**.
+
+No action is necessary unless you need to modify the default value for the endpoint.
+
+The following module is affected by this change:
+
+* [Magento_PageCache](/module-reference/module-page-cache/)
+
+### New system configuration for limiting coupon generation
+
+Added a new setting for the number of coupons to generate. This property has a default value of `250,000`, which is also the maximum value. Merchants can disable this feature by setting it to `0`  in the Admin by going to  **Stores** > **Settings** > **Configuration** > **Customers** > **Promotions** > **Code Quantity Limit**.
+
+The following module is affected by this change:
+
+* [Magento_SalesRule](/module-reference/module-sales-rule/)
+
+### New system configuration for payment information rate limiting
+
+New native application rate-limiting features have been added with initial out-of-the-box support for rate limiting of payment APIs. Disabled by default.
+
+No action for merchants or extension developers is necessary.
+
+The following module is affected by this change:
+
+* [Magento_Quote](/module-reference/module-quote/)
+
+### New system configuration validation for Two Factor Authentication `otp_window` value
+
+The updated `spomky-labs/otphp` library introduced a new validation requirement for supplying custom `otp_window` values. This configuration setting controls how long (in seconds) the system accepts an administrator's one-time-password (OTP) after it has expired. Previously, the library allowed any number of seconds to be specified. Now, the value cannot be higher than the lifetime of a single OTP (usually 30 seconds). You must update this value if it is currently set to 30 or higher.
+
+If your Commerce application is affected by this change, admin users might see the following message when they log in: `There was an internal error trying to verify your code`. You can confirm the cause of the error by checking the `system.log` file in `var/log` for an entry `main.ERROR: The leeway must be lower than the TOTP period`.
+
+To fix this issue, change the value of the configuration path `twofactorauth/google/otp_window` to be shorter than the TOTP period, which is usually 30 seconds. For example, you can reset it to 29 seconds using the `bin/magento config:set twofactorauth/google/otp_window 29` command. You might need to flush the cache to apply the updated configuration.
+
+## 2.4.6
+
+The following major backward-incompatible changes were introduced in the 2.4.6 Adobe Commerce and Magento Open Source releases:
+
+*  New default value for automatic redirects
+*  New system configuration for customer segments
+*  New system configuration for limiting products in grid
+*  New system configuration for OpenSearch module
+*  Symfony dependencies upgraded to latest LTS version
+*  Zend_Filter replaced with laminas-filter
+*  Zend_HTTP replaced with laminas-http
+*  Zend_Json replaced with laminas-json
+*  Zend_Validate replaced with laminas-validator
+
+### New default value for automatic redirects
+
+To improve performance, the default value for `generate_category_product_rewrites` in the [`app/code/Magento/CatalogURLRewrite/etc/config.xml`](https://github.com/magento/magento2/blob/2.4-develop/app/code/Magento/CatalogUrlRewrite/etc/config.xml#L12) file was changed from `1` to `0`. This change disables [automatic category/product URL rewrites](https://experienceleague.adobe.com/docs/commerce-admin/marketing/seo/url-rewrites/url-redirect-product-automatic.html#skip-rewrite), but only if you have not changed the previous default setting prior to upgrading to 2.4.6.
+
+The new default does not change existing records in the `catalog_url_rewrite_product_category` and `url_rewrite` database tables when upgrading to 2.4.6, but no new rewrites are added. You can enable the **Generate "category/product" URL Rewrites** setting if you want to continue using it after upgrading.
+
+<InlineAlert variant="warning" slots="text" />
+
+Manually changing this setting (for example, using the `bin/magento config:set catalog/seo/generate_category_product_rewrites 1` command) permanently deletes all rewrites with no ability to restore them. This may cause unresolved category/product type URL conflicts that you must resolve by manually updating URL keys.
+
+### New system configuration for limiting products in grid
+
+<!-- AC-6425 -->
+
+To improve product grid performance for large catalogs, a new system configuration setting (disabled by default) was added to limit the number of products in the grid: **Stores > Settings > Configuration > Advanced > Admin > Admin Grids > Limit Number of Products in Grid**. See [Limit number of products in grid](https://experienceleague.adobe.com/docs/commerce-operations/performance-best-practices/configuration.html#limit-number-of-products-in-grid).
+
+The product grid limitation only affects product collections that are used by UI components. As a result, not all product grids are affected by this limitation. Only those that are using the `Magento\Catalog\Ui\DataProvider\Product\ProductCollection` class.
+
+The following module is affected by this change:
+
+*  [Magento_Backend](/module-reference/module-backend/)
+
+### New system configuration for OpenSearch module
+
+<!-- AC-6339 -->
+
+In Adobe Commerce and Magento Open Source 2.4.4 and 2.4.3-p2, all system configuration fields labeled **Elasticsearch** also apply to OpenSearch. When support for Elasticsearch 8.x was introduced in 2.4.6, new labels were created to distinguish between Elasticsearch and OpenSearch configurations. See [Search engine configuration](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/search/configure-search-engine.html).
+
+To simplify current and future support for Elasticsearch and OpenSearch, we refactored redundant virtual types for the Elasticsearch modules and renamed the [functional test](https://developer.adobe.com/commerce/testing/functional-testing-framework/) action group `SearchEngineElasticsearch` to `SearchEngine`.
+
+These changes can be break tests or custom code if you:
+
+*  Use or extend the `SearchEngineElasticsearch` functional tests
+*  Use or extend the `Magento\Elasticsearch\SearchAdapter\ConnectionManager` virtual type, which was removed
+
+If these changes impact you, you must update all tests and custom code that rely on the refactored action group and removed virtual type.
+
+The following modules are affected by this change:
+
+*  [Magento_VisualMerchandiser](/module-reference/module-visual-merchandiser/)
+*  [Magento_GiftCard](/module-reference/module-gift-card/)
+*  [Magento_Elasticsearch](/module-reference/module-elasticsearch/)
+*  [Magento_Elasticsearch7](/module-reference/module-elasticsearch-7/)
+*  [Magento_Search](/module-reference/module-search/)
+*  [Magento_LayeredNavigation](/module-reference/module-layered-navigation/)
+*  [Magento_GroupedProduct](/module-reference/module-grouped-product/)
+*  [Magento_Downloadable](/module-reference/module-downloadable/)
+*  [Magento_Customer](/module-reference/module-customer/)
+*  [Magento_ConfigurableProduct](/module-reference/module-configurable-product/)
+*  [Magento_CatalogSearch](/module-reference/module-catalog-search/)
+*  [Magento_Catalog](/module-reference/module-catalog/)
+*  [Magento_Bundle](/module-reference/module-bundle/)
+*  [Magento_Config](/module-reference/module-config/)
+*  Magento_FunctionalTestModuleInventoryAdminUi
+*  Magento_OpenSearch
+
+### New system configuration for customer segments
+
+<!-- AC-6832 -->
+
+A new system configuration setting was added to avoid performance degradation when you have a large number of customer segments. See [customer segments validation](https://experienceleague.adobe.com/docs/commerce-operations/performance-best-practices/configuration.html#customer-segments-validation).
+
+You can enable or disable this setting at any time. No additional actions are necessary, except cleaning the cache.
+
+| Level | Target/Location                                                                                                                                                    | Code/Reason                  |
+|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| MINOR | Magento\CustomerSegment\Model\Customer::XML_PATH_REAL_TIME_CHECK_IF_CUSTOMER_IS_MATCHED_BY_SEGMENT<br/>/app/code/Magento/CustomerSegment/Model/Customer.php:47     | M071 Constant has been added |
+| MINOR | customer/magento_customersegment/real_time_check_if_customer_is_matched_by_segment<br/>/app/code/Magento/CustomerSegment/etc/adminhtml/system.xml:0                | M302 A field-node was added  |
+
+The following module is affected by this change:
+
+*  [Magento_CustomerSegment](/module-reference/module-customer-segment/)
+
+### Symfony dependencies upgraded to latest LTS version
+
+<!-- AC-6431 -->
+
+This change adds support for the latest version of Symfony, so that you can use the latest solutions to build more stable functionality and avoid hypothetical security issues.
+
+For example, this change updates the return type for the `Magento\Backend\Console\Command\AbstractCacheTypeManageCommand` class from `void` to `int`, which extends `Symfony\Component\Console\Command\Command` and [must return](https://github.com/symfony/symfony/issues/33747) the `int` type.
+
+If you override or extend the `Magento\Backend\Console\Command\AbstractCacheTypeManageCommand` class, you should check the return type for the `execute` method to avoid errors when executing command-line commands.
+
+The following module is affected by this change:
+
+*  [Magento_Backend](/module-reference/module-backend/)
+
+### Zend_Filter replaced with laminas-filter
+
+<!-- AC-6519 -->
+
+This change replaces the outdated `Zend_Filter` library with the actively supported `laminas-filter` library. The following modules are affected by this change:
+
+*  [Magento_GoogleAdwords](/module-reference/module-google-adwords/) (backend)
+*  Magento_Framework (translation and validation functionality)
+
+#### Interface changes
+
+The following interface changes are a result of replacing interfaces from the `Zend-Filter` library with the corresponding interfaces from the `laminas-filter` library.
+
+| Level | Target/Location                                                                                                            | Code/Reason                                 |
+|-------|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| MAJOR | Magento\Framework\Filter\FactoryInterface::createFilter<br/>/lib/internal/Magento/Framework/Filter/FactoryInterface.php:42 | M123 [public] Method return typing changed. |
+
+#### Class changes
+
+| Level | Target/Location                                                                                                              | Code/Reason                                    |
+|-------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| MAJOR | Magento\Framework\Stdlib\DateTime\Filter\Date<br/>/lib/internal/Magento/Framework/Stdlib/DateTime/Filter/Date.php:0          | M0123 Implements has been removed.             |
+| MAJOR | Magento\Framework\Filter\FilterManager::get<br/>/lib/internal/Magento/Framework/Filter/FilterManager.php:68                  | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Framework\Filter\FilterManager::createFilterInstance<br/>/lib/internal/Magento/Framework/Filter/FilterManager.php:87 | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\Framework\Filter\FilterManager::__call<br/>/lib/internal/Magento/Framework/Filter/FilterManager.php:128              | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Framework\Filter\Template<br/>/lib/internal/Magento/Framework/Filter/Template.php:0                                  | M0123 Implements has been removed.             |
+| MAJOR | Magento\GoogleAdwords\Model\Filter\UppercaseTitle<br/>/app/code/Magento/GoogleAdwords/Model/Filter/UppercaseTitle.php:0      | M0123 Implements has been removed.             |
+| MINOR | Magento\Framework\Stdlib\DateTime\Filter\Date<br/>/lib/internal/Magento/Framework/Stdlib/DateTime/Filter/Date.php:0          | M0125 Interface has been added.                |
+| MINOR | Magento\Framework\Filter\Template<br/>/lib/internal/Magento/Framework/Filter/Template.php:0                                  | M0125 Interface has been added.                |
+| MINOR | Magento\GoogleAdwords\Model\Filter\UppercaseTitle<br/>/app/code/Magento/GoogleAdwords/Model/Filter/UppercaseTitle.php:0      | M0125 Interface has been added.                |
+
+### Zend_HTTP replaced with laminas-http
+
+<!-- AC-6404 -->
+
+This change replaces the outdated `Zend_HTTP` library with the actively supported `laminas-http` library. The following modules are affected by this change:
+
+*  [Magento_Payment](/module-reference/module-payment/)
+*  Magento_Framework
+
+| Level | Target/Location                                                                                                     | Code/Reason                                    |
+|-------|---------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| MAJOR | Magento\Framework\HTTP\Adapter\Curl::setOptions<br/>/lib/internal/Magento/Framework/HTTP/Adapter/Curl.php:103       | V088 [public] Method parameter typing removed. |
+| MAJOR | Magento\Framework\HTTP\Adapter\Curl::$_options<br/>/lib/internal/Magento/Framework/HTTP/Adapter/Curl.php:63         | V009 [protected] Property has been removed.    |
+| MAJOR | Magento\Framework\HTTP\Adapter\Curl<br/>/lib/internal/Magento/Framework/HTTP/Adapter/Curl.php:0                     | M0123 Implements has been removed.             |
+| MAJOR | Magento\Payment\Gateway\Http\Client\Zend::__construct<br/>/app/code/Magento/Payment/Gateway/Http/Client/Zend.php:46 | M113 [public] Method parameter typing changed. |
+| MINOR | Magento\Framework\HTTP\Adapter\Curl<br/>/lib/internal/Magento/Framework/HTTP/Adapter/Curl.php:0                     | M0125 Interface has been added.                |
+
+### Zend_Validate replaced with laminas-validator
+
+<!-- AC-6405 -->
+
+This change replaces the outdated `Zend_Validate` library with the actively supported `laminas-validator` library. The following modules are affected by this change:
+
+*  [Magento_Store](/module-reference/module-store/) (validations during the creation of a new store)
+*  [Magento_User](/module-reference/module-user/)
+*  [Magento_GoogleAdwords](/module-reference/module-google-adwords/) (backend)
+*  Magento_Framework (translation and validation functionality)
+
+#### Interface changes
+
+The following interface changes are a result of replacing interfaces from the `Zend-Validate` library with the corresponding interfaces from the `laminas-validate` library.
+
+| Level | Target/Location                                                                                                                       | Code/Reason                                  |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| MAJOR | Magento\Framework\Validator\ValidatorInterface::setTranslator<br/>/lib/internal/Magento/Framework/Validator/ValidatorInterface.php:23 | V075 [public] Method parameter typing added. |
+| MAJOR | Magento\Framework\Validator\ValidatorInterface::getTranslator<br/>/lib/internal/Magento/Framework/Validator/ValidatorInterface.php:30 | M123 [public] Method return typing changed.  |
+| MAJOR | Magento\Framework\Validator\ValidatorInterface<br/>/lib/internal/Magento/Framework/Validator/ValidatorInterface.php:0                 | M0122 Extends has been removed.              |
+| MAJOR | Magento\Framework\Translate\AdapterInterface::translate<br/>/lib/internal/Magento/Framework/Translate/AdapterInterface.php:27         | M102 [public] Added optional parameter(s).   |
+| MINOR | Magento\Framework\Validator\ValidatorInterface<br/>/lib/internal/Magento/Framework/Validator/ValidatorInterface.php:0                 | M0127 Added parent to interface.             |
+| MINOR | Magento\Framework\Translate\AdapterInterface<br/>/lib/internal/Magento/Framework/Translate/AdapterInterface.php:0                     | M0127 Added parent to interface.             |
+
+#### Class changes
+
+| Level | Target/Location                                                                                                                                                     | Code/Reason                                    |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| MAJOR | Magento\Framework\Validator::setTranslator<br/>/lib/internal/Magento/Framework/Validator.php:80                                                                     | V085 [public] Method parameter typing added.   |
+| MAJOR | Magento\Framework\Validator\AbstractValidator::setDefaultTranslator<br/>/lib/internal/Magento/Framework/Validator/AbstractValidator.php:40                          | M113 [public] Method parameter typing changed. |
+| MAJOR | Magento\Framework\Validator\AbstractValidator::getDefaultTranslator<br/>/lib/internal/Magento/Framework/Validator/AbstractValidator.php:50                          | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Framework\Validator\AbstractValidator::setTranslator<br/>/lib/internal/Magento/Framework/Validator/AbstractValidator.php:61                                 | V085 [public] Method parameter typing added.   |
+| MAJOR | Magento\Framework\Validator\AbstractValidator::getTranslator<br/>/lib/internal/Magento/Framework/Validator/AbstractValidator.php:72                                 | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Framework\Validator\Constraint::setTranslator<br/>/lib/internal/Magento/Framework/Validator/Constraint.php:89                                               | V085 [public] Method parameter typing added.   |
+| MAJOR | Magento\Framework\Validator\Constraint::getTranslator<br/>/lib/internal/Magento/Framework/Validator/Constraint.php:100                                              | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Framework\Validator\DataObject::addRule<br/>/lib/internal/Magento/Framework/Validator/DataObject.php:41                                                     | M113 [public] Method parameter typing changed. |
+| MAJOR | Magento\Framework\Validator\DataObject<br/>/lib/internal/Magento/Framework/Validator/DataObject.php:0                                                               | M0123 Implements has been removed.             |
+| MAJOR | Magento\Framework\Model\AbstractModel::_getValidatorBeforeSave<br/>/lib/internal/Magento/Framework/Model/AbstractModel.php:743                                      | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\Framework\Model\AbstractModel::_createValidatorBeforeSave<br/>/lib/internal/Magento/Framework/Model/AbstractModel.php:758                                   | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\Framework\Model\AbstractModel::_getValidationRulesBeforeSave<br/>/lib/internal/Magento/Framework/Model/AbstractModel.php:784                                | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\User\Model\User::_getValidationRulesBeforeSave<br/>/app/code/Magento/User/Model/User.php:321                                                                | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\User\Model\ResourceModel\User::getValidationRulesBeforeSave<br/>/app/code/Magento/User/Model/ResourceModel/User.php:495                                     | M120 [public] Method return typing changed.    |
+| MAJOR | Magento\Store\Model\Store::_getValidationRulesBeforeSave<br/>/app/code/Magento/Store/Model/Store.php:479                                                            | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\GoogleAdwords\Model\Config\Backend\Color::_getValidationRulesBeforeSave<br/>/app/code/Magento/GoogleAdwords/Model/Config/Backend/Color.php:21               | M121 [protected] Method return typing changed. |
+| MAJOR | Magento\GoogleAdwords\Model\Config\Backend\ConversionId::_getValidationRulesBeforeSave<br/>/app/code/Magento/GoogleAdwords/Model/Config/Backend/ConversionId.php:21 | M121 [protected] Method return typing changed. |
+| MINOR | Magento\Framework\Validator\DataObject<br/>/lib/internal/Magento/Framework/Validator/DataObject.php:0                                                               | M0125 Interface has been added.                |
 
 ## 2.4.5
 
@@ -13,7 +459,7 @@ The `grunt-contrib-jasmine.js` library has been updated. The `toBeFalsy()` funct
 
 ### Static content deployment
 
-A new backend theme (`magento/spectrum`) was added to support integration with Adobe Experience Platform. As a result, static file generation does not work correctly after upgrading to Adobe Commerce 2.4.5 on cloud infrastructure if you use the [`SCD_MATRIX`](https://devdocs.magento.com/cloud/env/variables-deploy.html#scd_matrix) deployment strategy.
+A new backend theme (`magento/spectrum`) was added to support integration with Adobe Experience Platform. As a result, static file generation does not work correctly after upgrading to Adobe Commerce 2.4.5 on cloud infrastructure if you use the [`SCD_MATRIX`](https://experienceleague.adobe.com/en/docs/commerce-cloud-service/user-guide/configure/env/stage/variables-deploy#scd_matrix) deployment strategy.
 
 If you use the `SCD_MATRIX` configuration, you must add the new `magento/spectrum` theme to your `.magento.env.yaml` file or your custom static content deploy command.  
 
@@ -139,7 +585,7 @@ As a result, email or newsletter templates that worked in previous versions may 
 
 Version 2.4.3-p1 introduced a configuration option for Media Gallery content that denotes which folders can contain Media gallery files.
 
-The new configuration path `system/media_storage_configuration/media_storage/allowed_resource/media_gallery_image_folders` is used to define the "Media Gallery Allowed" folders in 'config.xml'.
+The new configuration path `system/media_storage_configuration/allowed_resources/media_gallery_image_folders` is used to define the "Media Gallery Allowed" folders in 'config.xml'.
 
 The initial values are the `wysiwyg` and `catalog/category` folders.
 

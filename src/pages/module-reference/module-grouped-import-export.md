@@ -1,6 +1,6 @@
 ---
 title: GroupedImportExport
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_GroupedImportExport module
@@ -10,7 +10,7 @@ This module is designed to extend existing functionality of Magento_CatalogImpor
 
 ## Installation
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -21,5 +21,9 @@ Extension developers can interact with the Magento_GroupedImportExport module. F
 ## Additional information
 
 You can get more information about import/export processes in magento at the articles:
-- [Import](https://docs.magento.com/user-guide/system/data-import.html)
-- [Export](https://docs.magento.com/user-guide/system/data-export.html)
+
+- [Import](https://experienceleague.adobe.com/docs/commerce-admin/systems/data-transfer/import/data-import.html)
+- [Export](https://experienceleague.adobe.com/docs/commerce-admin/systems/data-transfer/data-export.html)
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.5.

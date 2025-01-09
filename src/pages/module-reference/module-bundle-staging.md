@@ -1,6 +1,6 @@
 ---
 title: BundleStaging
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_BundleStaging module
@@ -31,4 +31,7 @@ You can extend Bundle updates product listing using  the grid UI component locat
 
 ## Additional information
 
-For more Magento 2 developer documentation, see [Magento 2 Developer Documentation](https://devdocs.magento.com).
+For more Magento 2 developer documentation, see [Adobe Commerce Developer Documentation](https://developer.adobe.com/commerce/docs/).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.7.

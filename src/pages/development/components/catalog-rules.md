@@ -3,12 +3,14 @@ title: Extend Catalog Rule Conditions | Commerce PHP Extensions
 description: Learn how Adobe Commerce and Magento Open Source catalog price rules are implemented.
 contributor_name: Ziffity
 contributor_link: https://www.ziffity.com/
+keywords:
+  - Extensions
 ---
 
 # Extend catalog rule conditions
 
 Catalog price rules can be used to offer products to buyers at a discounted price, based on a set of defined conditions. Catalog price rules do not use coupon codes. The discounts are applied to the final product price in the product listing and the product description page even before adding the product to the shopping cart.
-For more information about catalog price rules, refer to [Catalog Rules](https://docs.magento.com/user-guide/marketing/price-rules-catalog.html).
+For more information about catalog price rules, refer to [Catalog Rules](https://experienceleague.adobe.com/en/docs/commerce-admin/marketing/promotions/catalog-rules/price-rules-catalog).
 
 ## Default conditions
 
@@ -83,8 +85,8 @@ Below is the definition of the `validate` method:
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Catalog\Model\Product;

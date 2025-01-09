@@ -1,23 +1,25 @@
 ---
 title: EAV and Extension Attributes | Commerce PHP Extensions
 description: Learn about the main types of attributes you can use to extend Adobe Commerce and Magento Open Source.
+keywords:
+  - Extensions
 ---
 
 # EAV and extension attributes
 
 There are two types of attributes you can use to extend Adobe Commerce and Magento Open Source functionality:
 
-*  Custom and Entity-Attribute-Value (EAV) attributes—Custom attributes are those added on behalf of a merchant. For example, a merchant might need to add attributes to describe products, such as shape or volume. A merchant can add these attributes in the [Admin](https://glossary.magento.com/magento-admin) panel. See the [merchant documentation](https://docs.magento.com/user-guide/stores/attributes.html) for information about managing custom attributes.
+*  Custom and Entity-Attribute-Value (EAV) attributes—Custom attributes are those added on behalf of a merchant. For example, a merchant might need to add attributes to describe products, such as shape or volume. A merchant can add these attributes in the Admin panel. See the [merchant documentation](https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/product-attributes/product-attributes) for information about managing custom attributes.
 
    Custom attributes are a subset of EAV attributes. Objects that use EAV attributes typically store values in several MySQL tables. The `Customer` and `Catalog` modules are the primary models that use EAV attributes. Other modules, such as `ConfigurableProduct`, `GiftMessage`, and `Tax`, use the EAV functionality for `Catalog`.
 
-*  [Extension attributes](https://glossary.magento.com/extension-attribute). Extension attributes are new in Adobe Commerce and Magento Open Source. They are used to extend functionality and often use more [complex data](https://glossary.magento.com/complex-data) types than custom attributes. These attributes do not appear in the Admin.
+*  Extension attributes. Extension attributes are new in Adobe Commerce and Magento Open Source. They are used to extend functionality and often use more complex data types than custom attributes. These attributes do not appear in the Admin.
 
 ## Custom attributes
 
 `CustomAttributesDataInterface` defines the methods that are called to get and set custom attributes, including `getCustomAttributes()`.
 
-A [module](https://glossary.magento.com/module) has a set of built-in attributes that are always available. The `Catalog` module has several attributes that are defined as EAV attributes, but are treated as built-in attributes. These attributes include:
+A module has a set of built-in attributes that are always available. The `Catalog` module has several attributes that are defined as EAV attributes, but are treated as built-in attributes. These attributes include:
 
 *  attribute_set_id
 *  created_at
@@ -25,7 +27,7 @@ A [module](https://glossary.magento.com/module) has a set of built-in attributes
 *  media_gallery
 *  name
 *  price
-*  [sku](https://glossary.magento.com/sku)
+*  sku
 *  status
 *  store_id
 *  tier_price
@@ -53,8 +55,8 @@ Both the `save()` and `getResource()` methods for `Magento\Framework\Model\Abstr
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Customer\Setup\Patch\Data;
@@ -184,7 +186,7 @@ In the following example, an attribute named `stock_item` of type `Magento\Catal
 </extension_attributes>
 ```
 
-When `getList()` is called, it returns a list of `ProductInterface`s. When it does this, the code populates the `stock_item` with a joined operation in which the `StockItemInterface`’s `qty` property comes from the `cataloginventory_stock_item` table where the `Product`'s `entity_Id` is joined with the `cataloginventory_stock_item.product_id` column.
+When `getList()` is called, it returns a list of `ProductInterface`s. When it does this, the code populates the `stock_item` with a joined operation in which the `StockItemInterface`'s `qty` property comes from the `cataloginventory_stock_item` table where the `Product`'s `entity_Id` is joined with the `cataloginventory_stock_item.product_id` column.
 
 When you add search extension attributes, you must consider that this can cause ambiguity in the selection of fields in the resulting SQL query when using REST APIs.
 In these cases, the REST call must explicitly specify both the table name and field to use for selecting.

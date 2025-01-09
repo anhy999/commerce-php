@@ -1,6 +1,8 @@
 ---
 title: Dependency Injection | Commerce PHP Extensions
 description: Learn how to declare dependencies to external objects when developing Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Extensions
 ---
 
 # Dependency injection
@@ -49,8 +51,8 @@ The following code sample highlights the two types of dependency injections used
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Backend\Model\Menu;

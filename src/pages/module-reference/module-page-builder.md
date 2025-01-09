@@ -1,6 +1,6 @@
 ---
 title: PageBuilder
-description: README.md contents of the module from the source code
+description: Page Builder module
 ---
 
 # Magento_PageBuilder module
@@ -25,7 +25,7 @@ This setting determines the `is_pagebuilder_enabled` configuration value.
 
 You can disable the PageBuilder module for a specific field by adding the following entry to a field configuration in an XML configuration file:
 
-```
+```xml
 <item name="wysiwygConfigData" xsi:type="array">
     <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
 </item>
@@ -35,7 +35,7 @@ You can disable the PageBuilder module for a specific field by adding the follow
 
 The following example disables the PageBuilder editor for the content field.
 
-```
+```xml
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <fieldset name="content" sortOrder="10">
         <field name="content" formElement="wysiwyg">
@@ -53,3 +53,6 @@ The following example disables the PageBuilder editor for the content field.
 ```
 
 **Note:** Disabling the editor this way overrides the value of `is_pagebuilder_enabled` for the specified field.
+
+<InlineAlert slots="text" />
+The version of this module is 2.2.5.

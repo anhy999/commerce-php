@@ -1,11 +1,13 @@
 ---
 title: Composer integration | Commerce PHP Extensions
 description: Integrate Composer with your Adobe Commerce and Magento Open Source components.
+keywords:
+  - Extensions
 ---
 
 # Composer integration
 
-Adobe Commerce and Magento Open Source use [Composer][0], a [PHP](https://glossary.magento.com/php) dependency manager, to package components and product editions.
+Adobe Commerce and Magento Open Source use [Composer][0], a PHP dependency manager, to package components and product editions.
 
 Composer reads a `composer.json` file in the application's root directory to download third-party dependencies listed in the file.
 
@@ -41,7 +43,7 @@ Here is an example of the `composer.json` file.
 
 ## Composer binary location
 
-Adobe Commerce and Magento Open Source use the Composer binary in the `<Application root>/vendor/composer` directory instead of a globally installed [composer](https://glossary.magento.com/composer).
+Adobe Commerce and Magento Open Source use the Composer binary in the `<Application root>/vendor/composer` directory instead of a globally installed composer.
 
 Keep this in mind while customizing, updating, or troubleshooting Composer while working with Adobe Commerce and Magento Open Source.
 
@@ -88,7 +90,7 @@ System integrators use this `composer.json` file to deploy the Magento Open Sour
 
 **Name:** `magento/product-enterprise-edition`
 
-**Type:** `metapackage`
+**Type:** `project`
 
 System integrators use this `composer.json` file to deploy the Adobe Commerce product and its dependencies.
 
@@ -117,7 +119,7 @@ The Adobe Commerce and Magento Open Source applications uses this `composer.json
 
 **Type:** `magento2-module`
 
-The `composer.json` file for a [module](https://glossary.magento.com/module) extension declares external dependencies that it needs to function.
+The `composer.json` file for a module extension declares external dependencies that it needs to function.
 
 ---
 
@@ -132,7 +134,7 @@ The `composer.json` file for a [module](https://glossary.magento.com/module) ext
 
 **Type:** `magento2-theme`
 
-The `composer.json` file for a [theme](https://glossary.magento.com/theme) component contains parent theme dependencies the extension needs to inherit.
+The `composer.json` file for a theme component contains parent theme dependencies the extension needs to inherit.
 
 ---
 
@@ -219,9 +221,9 @@ Using Adobe Commerce and Magento Open Source code as an example, marketing versi
 [2]: https://packagist.org/
 [3]: https://getcomposer.org/doc/05-repositories.md#path
 [4]: https://www.iso.org/iso-639-language-codes.html
-[5]: https://developer.adobe.com/commerce/marketplace/guides/sellers/profile-company/
+[5]: https://developer.adobe.com/commerce/marketplace/guides/sellers/profile-information/
 [6]: https://marketplace.magento.com/
 [7]: https://marketplace.magento.com
 [8]: ../package/component.md#metapackage-example
 [9]: https://getcomposer.org/doc/03-cli.md#create-project
-[10]: https://devdocs.magento.com/guides/v2.4/install-gde/composer.html
+[10]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/composer

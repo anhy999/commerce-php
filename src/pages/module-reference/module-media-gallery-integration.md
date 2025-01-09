@@ -1,6 +1,6 @@
 ---
 title: MediaGalleryIntegration
-description: README.md contents of the module from the source code
+description: Magento module responsible for integration of enhanced media gallery
 ---
 
 # Magento_MediaGalleryIntegration module
@@ -10,7 +10,7 @@ The purpose of this module is to keep the integration of enhanced media gallery 
 ## Installation details
 
 Before installing this module, note that the Magento_MediaGalleryIntegration is dependent on the Magento_Ui module.
-For information about module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -18,4 +18,7 @@ For information about module installation in Magento 2, see [Enable or disable m
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.4.x Release information](https://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.4.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.6.

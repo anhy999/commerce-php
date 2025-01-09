@@ -1,6 +1,6 @@
 ---
 title: MediaContentSynchronizationApi
-description: README.md contents of the module from the source code
+description: Magento module responsible for the media content synchronization implementation API
 ---
 
 # Magento_MediaContentSynchronizationApi module
@@ -15,4 +15,7 @@ Extension developers can interact with the Magento_MediaContentSynchronizationAp
 
 ## Additional information
 
-For information about significant changes in patch releases, see [Release information](https://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.5.

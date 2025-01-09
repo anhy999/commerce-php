@@ -1,11 +1,13 @@
 ---
 title: Web API Technical Vision | Commerce PHP Extensions
-description: Learn about the aspirational vision that guides the development of the Commerce framework web API. 
+description: Learn about the aspirational vision that guides the development of the Commerce framework web API.
+keywords:
+  - Extensions
 ---
 
 # Web API technical vision
 
-import Docs from '/src/pages/_includes/web-api.md'
+import Docs from '/src/_includes/web-api.md'
 
 <Docs />
 
@@ -27,7 +29,7 @@ The following image provides an overview of how Web API requests are processed.
 
 ### Declare a new REST and SOAP endpoint
 
-Any [service contract](https://developer.adobe.com/commerce/php/development/components/service-contracts/) can be [exposed as REST and SOAP](https://developer.adobe.com/commerce/php/development/components/web-api/services/) endpoints via configuration in a module's `webapi.xml` file.
+Any [service contract](/development/components/service-contracts/) can be [exposed as REST and SOAP](/development/components/web-api/services/) endpoints via configuration in a module's `webapi.xml` file.
 
 ### Declare a new GraphQL query/mutation
 
@@ -36,12 +38,12 @@ Any [service contract](https://developer.adobe.com/commerce/php/development/comp
 
 If the target module is called `MyModule`, then create the resolvers and configuration files in a new module called `MyModuleGraphQl`.
 
-See the [GraphQL documentation](https://devdocs.magento.com/guides/v2.4/graphql/index.html) for more information.
+See the [GraphQL documentation](https://developer.adobe.com/commerce/webapi/graphql/index.html) for more information.
 
 ### Add a custom authentication mechanism
 
 1. Provide a custom implementation of `\Magento\Authorization\Model\UserContextInterface` that verifies a user's identity using a  custom authentication mechanism.
-1. Declare custom user context in the composite user context for the target area(s) (`webapi_rest`, `webapi_soap`, `webapi_graphql`) :
+1. Declare custom user context in the composite user context for the target area(s) (`webapi_rest`, `webapi_soap`, `graphql`) :
 
 ```xml
 <type name="Magento\Authorization\Model\CompositeUserContext">
@@ -60,7 +62,7 @@ See the [GraphQL documentation](https://devdocs.magento.com/guides/v2.4/graphql/
 
 The recommended approach for modifying an interface is to define a new endpoint. If you simply modify the schema, you might break existing integrations or extensions.
 
-To extend an interface, use [extension attributes](https://developer.adobe.com/commerce/php/development/components/attributes/).
+To extend an interface, use [extension attributes](/development/components/attributes/).
 
 ### Modify the schema of an existing GraphQL query
 

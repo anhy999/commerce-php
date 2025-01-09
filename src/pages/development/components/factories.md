@@ -3,11 +3,13 @@ title: Factories | Commerce PHP Extensions
 description: Use factories to instantiate non-injectable classes in your Adobe Commerce and Magento Open Source extenions.
 contributor_name: Classy Llama
 contributor_link: http://www.classyllama.com/
+keywords:
+  - Extensions
 ---
 
 # Factories
 
-Factories are service classes that instantiate non-injectable classes, that is, models that represent a database [entity](https://glossary.magento.com/entity).
+Factories are service classes that instantiate non-injectable classes, that is, models that represent a database entity.
 They create a layer of abstraction between the `ObjectManager` and business code.
 
 ## Relationship to `ObjectManager`
@@ -15,15 +17,15 @@ They create a layer of abstraction between the `ObjectManager` and business code
 The `Magento\Framework\ObjectManager` is the class responsible for instantiating objects in the application.
 Adobe Commerce and Magento Open Source prohibit depending on and directly using the `ObjectManager` in your code.
 
-Factories are an [exception](https://glossary.magento.com/exception) to this rule because they require the `ObjectManager` to instantiate specific models.
+Factories are an exception to this rule because they require the `ObjectManager` to instantiate specific models.
 
 The following example illustrates the relationship between a simple factory and the `ObjectManager`:
 
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Framework\App\Config;
@@ -76,7 +78,7 @@ You can get the singleton instance of a factory for a specific model using [depe
 The following example shows a class getting the `BlockFactory` instance through the constructor:
 
 ```php
-function __construct ( \Magento\Cms\Model\BlockFactory $blockFactory) {
+public function __construct ( \Magento\Cms\Model\BlockFactory $blockFactory) {
     $this->blockFactory = $blockFactory;
 }
 ```
@@ -110,4 +112,4 @@ For example, in the [`CatalogInventory`](https://github.com/magento/magento2/blo
 ```
 
 It instructs the application to use the specific [`Item`](https://github.com/magento/magento2/blob/2.4/app/code/Magento/CatalogInventory/Model/Stock/Item.php) class wherever the [`StockItemInterface`](https://github.com/magento/magento2/blob/2.4/app/code/Magento/CatalogInventory/Api/Data/StockItemInterface.php) is used.
-When a class in that [module](https://glossary.magento.com/module) includes the factory `StockItemInterfaceFactory` as a dependency, the application generates a factory that is capable of creating the specific `Item` objects.
+When a class in that module includes the factory `StockItemInterfaceFactory` as a dependency, the application generates a factory that is capable of creating the specific `Item` objects.

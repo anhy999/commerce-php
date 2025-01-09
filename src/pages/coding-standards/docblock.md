@@ -1,6 +1,8 @@
 ---
 title: DocBlock Standard | Commerce PHP Extensions
 description: Review standards for adding inline documentation to PHP code in Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Extensions
 ---
 
 # DocBlock standard
@@ -19,7 +21,7 @@ The goal of this standard is to unify usage of code DocBlocks for all files, not
 
 The following is assumed by default:
 
-*  Formatting according to the [phpDocumentor](https://docs.phpdoc.org/latest/guide/references/phpdoc/basic-syntax.html#basic-syntax) standard
+*  Formatting according to the [phpDocumentor](https://docs.phpdoc.org/guide/getting-started/what-is-a-docblock.html#what-is-a-docblock) standard.
 *  Requirements apply for all files regardless of programming language, but a DocBlock standard for the particular language may override it.
 
 ## General principles
@@ -128,8 +130,8 @@ Use the following templates for the license notice and copyright blocks:
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Framework\Api;
@@ -145,14 +147,14 @@ interface MetadataObjectInterface
 }
 ```
 
-**Template for [XML](https://glossary.magento.com/xml) Files:**
+**Template for XML Files:**
 
 ```xml
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 -->
 ```
@@ -161,8 +163,8 @@ interface MetadataObjectInterface
 
 ```javascript
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 ```
 
@@ -205,8 +207,8 @@ There are two solutions possible:
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 /**
@@ -231,8 +233,8 @@ class Bootstrap
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Framework\Profiler\Adapter;
@@ -280,7 +282,7 @@ If possible, add use cases which suggests where developers can or cannot use the
 ### Short name form
 
 It is encouraged to use the short form of the name to encourage readability and consistency with the type hint.
-The only [exception](https://glossary.magento.com/exception) is in the `Service/DTO` classes due to tooling requirements.
+The only exception is in the `Service/DTO` classes due to tooling requirements.
 
 **Example of a Method DocBlock:**
 
@@ -316,8 +318,8 @@ Class attributes must have a type declaration using `@var` tag.
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento;
@@ -521,7 +523,7 @@ For example:
 
 #### @return tag
 
-In general, method return type signatures should be prefered over `@return` type annotations.
+In general, method return type signatures should be preferred over `@return` type annotations.
 If that is not possible due to ambiguous return types or backward compatibility constraints, the `@return` type annotation must be used.
 If there is no explicit return statement in a method or function or a return statement without a value, a `void` return type must be declared in the method signature. For example:
 
@@ -595,8 +597,8 @@ In general, such method overrides are a [code smell](https://en.wikipedia.org/wi
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 /**
@@ -623,8 +625,8 @@ interface MutableInterface
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 /**
@@ -657,7 +659,7 @@ class LimitedMutableClass implements MutableInterface
 The `@api` tag indicates the code is part of the public API and is subject to the [Backward Compatibility Policy](https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/).
 
 The `@api` tag can be applied to a constant, a method, or to the entire class/interface.
-If the `@api` tag is applied at the file level, then all methods within the file are part of the public [API](https://glossary.magento.com/api).
+If the `@api` tag is applied at the file level, then all methods within the file are part of the public API.
 You do not need to annotate each method individually.
 
 See [Semantic Versioning 2.0.0](http://semver.org/) for information about changing and updating code while maintaining backward compatibility.
@@ -749,7 +751,7 @@ Specifically, this is possible when a PHP file is composed from multiple file in
 
 ### @method tag
 
-The `@method` allows a class to know which ‘magic’ methods are callable.
+The `@method` allows a class to know which 'magic' methods are callable.
 
 Syntax:
 
@@ -762,8 +764,8 @@ See [PHP documentation](https://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDoc
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\Catalog\Model\Product;

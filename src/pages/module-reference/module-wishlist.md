@@ -1,6 +1,6 @@
 ---
 title: Wishlist
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_Wishlist module
@@ -21,7 +21,7 @@ Before disabling or uninstalling this module, note the following dependencies:
 
 - Magento_WishlistAnalytics
 
-Refer to [how to enable or disable modules in Magento 2](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+Refer to [how to enable or disable modules in Magento 2](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Structure
 
@@ -104,3 +104,6 @@ You can extend a customer form and widgets using the configuration files located
     - `widget_recently_viewed`
 
 For information about a UI component, see [Overview of UI components](https://developer.adobe.com/commerce/frontend-core/ui-components/).
+
+<InlineAlert slots="text" />
+The version of this module is 101.2.7.
