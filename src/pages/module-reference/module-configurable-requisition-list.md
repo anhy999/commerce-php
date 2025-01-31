@@ -1,6 +1,6 @@
 ---
 title: ConfigurableRequisitionList
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_ConfigurableRequisitionList module
@@ -26,3 +26,6 @@ The Magento_ConfigurableRequisitionList module has a dependency on the Magento_R
 You can extend and override layouts in the `Magento\ConfigurableRequisitionList\view\frontend\layout` directories.
 
 For more information about layouts, see the [Layout documentation](https://developer.adobe.com/commerce/frontend-core/guide/layouts/).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.1.

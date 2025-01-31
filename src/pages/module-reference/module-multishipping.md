@@ -1,6 +1,6 @@
 ---
 title: Multishipping
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_Multishipping module
@@ -10,11 +10,12 @@ using different carriers. The module provides alternative to standard checkout f
 
 ## Installation
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Structure
 
-For information about a typical file structure of a module, see [Module file structure](https://developer.adobe.com/commerce/php/development/build/component-file-structure/#module-file-structure).
+For information about a typical file structure of a module in Magento 2,
+ see [Module file structure](https://developer.adobe.com/commerce/php/development/build/component-file-structure/#module-file-structure).
 
 ## Extensibility
 
@@ -33,7 +34,7 @@ For example:
 </type>
 ```
 
-You can check this configuration and find more examples in the `etc/frontend/di.xml` file.
+Yo can check this configuration and find more examples in the `etc/frontend/di.xml` file.
 
 More information about [type configuration](https://developer.adobe.com/commerce/php/development/build/dependency-injection-file/).
 
@@ -47,7 +48,7 @@ This module observes the following event:
 
 `etc/frontend/`
 
- - `checkout_cart_save_before` in the `Magento\Multishipping\Observer\DisableMultishippingObserver` file. 
+ - `checkout_cart_save_before` in the `Magento\Multishipping\Observer\DisableMultishippingObserver` file.
 
 The module dispatches the following events:
 
@@ -74,7 +75,7 @@ The module dispatches the following events:
   class `\Magento\Multishipping\Model\Checkout\Type\Multishipping::createOrders()` method. Parameters:
     - `orders` is order object array `\Magento\Sales\Model\Order`  that was created.
 
-For information about an event in Magento 2, see [Events and observers](http://devdocs.magento.com/guides/v2.3/extension-dev-guide/events-and-observers.html#events).
+For information about an event in Magento 2, see [Events and observers](https://developer.adobe.com/commerce/php/development/components/events-and-observers/#events).
 
 ### Layouts
 
@@ -83,7 +84,7 @@ The module interacts with the following layout handles:
 `view/frontend/layout` directory:
 
  - `checkout_cart_index`
- 
+
 This module introduces the following layouts and layout handles:
 
 `view/frontend/layout` directory:
@@ -140,4 +141,7 @@ Module introduces the new pages:
 
 More information about [layout types](https://developer.adobe.com/commerce/frontend-core/guide/layouts/types/).
 
-For information about significant changes in patch releases, see [2.4.x Release information](http://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.3.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.7.

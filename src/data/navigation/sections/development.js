@@ -196,6 +196,10 @@ module.exports = [
       path: "/development/components/",
       pages: [
         {
+          title: "GraphQL Application Server compatibility",
+          path: "/development/components/app-server/",
+        },
+        {
           title: "Asynchronous and deferred operations",
           path: "/development/components/async-operations/",
         },
@@ -332,7 +336,7 @@ module.exports = [
               path: "/development/components/message-queues/bulk-operations/",
             },
             {
-              title: "Example bulk operation implemntation",
+              title: "Example bulk operation implementation",
               path: "/development/components/message-queues/bulk-operations-example/",
             },
             {
@@ -616,6 +620,10 @@ module.exports = [
         {
           title: "Server-side request forgery prevention",
           path: "/development/security/server-side-request-forgery/",
+        },
+        {
+          title: "Subresource Integrity",
+          path: "/development/security/subresource-integrity/",
         },
       ],
     },

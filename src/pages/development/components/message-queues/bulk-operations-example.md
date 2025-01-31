@@ -1,13 +1,15 @@
 ---
-title: Example Bulk Operations Implementation | Commerce PHP Extensions
+title: Bulk operations implementation | Commerce PHP Extensions
 description: Use this example to create your own bulk operation in Adobe Commerce or Magento Open Source.
+keywords:
+  - Extensions
 ---
 
 # Example bulk operations implementation
 
 This document describes how bulk operations can be implemented. There are three primary tasks to accomplish this:
 
-*  Create a [publisher](https://glossary.magento.com/publisher-subscriber-pattern) that sends messages to the message queue
+*  Create a publisher that sends messages to the message queue
 *  Create a consumer that receives and processes messages
 *  Configure the message queues
 
@@ -20,8 +22,8 @@ The following code sample shows how these duties can be completed.
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
@@ -153,8 +155,8 @@ A consumer class receives messages from the message queue and changes the status
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\SharedCatalog\Model\ResourceModel\ProductItem\Price;
@@ -287,7 +289,7 @@ For more information about the `di.xml` file, see [Dependency Injection](../depe
 
 ### Create `communication.xml`
 
-The `communication.xml` file defines aspects of the message queue system that apply to all topics for the [module](https://glossary.magento.com/module). Create this file with the following contents:
+The `communication.xml` file defines aspects of the message queue system that apply to all topics for the module. Create this file with the following contents:
 
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">

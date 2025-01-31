@@ -1,6 +1,6 @@
 ---
 title: MsrpConfigurableProduct
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_MsrpConfigurableProduct module
@@ -10,12 +10,12 @@ Provides implementation of msrp price calculation for Configurable Product.
 
 ## Installation
 
-For information about a module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html)
+For information about a module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html)
 
 ## Structure
 
-`Pricing\` - directory contains implementation of msrp price calculation 
-for Grouped Product (`Magento\MsrpGroupedProduct\Pricing\MsrpPriceCalculator` class). 
+`Pricing\` - directory contains implementation of msrp price calculation
+for Grouped Product (`Magento\MsrpGroupedProduct\Pricing\MsrpPriceCalculator` class).
 
 For information about a typical file structure of a module in Magento 2,
  see [Module file structure](https://developer.adobe.com/commerce/php/development/build/component-file-structure/#module-file-structure).
@@ -28,12 +28,15 @@ For information about a typical file structure of a module in Magento 2,
 
 ### Layouts
 
-For more information about a layout in Magento 2, see the [Layout documentation](http://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/layout-overview.html).
+For more information about a layout in Magento 2, see the [Layout documentation](https://developer.adobe.com/commerce/frontend-core/guide/layouts/).
 
 ### UI components
 
-For information about a UI component in Magento 2, see [Overview of UI components](http://devdocs.magento.com/guides/v2.3/ui_comp_guide/bk-ui_comps.html).
+For information about a UI component in Magento 2, see [Overview of UI components](https://developer.adobe.com/commerce/frontend-core/ui-components/).
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.4.x Release information](https://devdocs.magento.com/guides/v2.4/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.4.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.4.

@@ -1,6 +1,6 @@
 ---
 title: NegotiableQuoteSharedCatalog
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_NegotiableQuoteSharedCatalog
@@ -26,3 +26,6 @@ The Magento_NegotiableQuoteSharedCatalog module does not create any backward inc
 Extension developers can interact with the Magento_NegotiableQuoteSharedCatalog module. For more information about the Magento extension mechanism, see [Magento plug-ins](https://developer.adobe.com/commerce/php/development/components/plugins/).
 
 [The Magento dependency injection mechanism](https://developer.adobe.com/commerce/php/development/components/dependency-injection/) enables you to override the functionality of the Magento_NegotiableQuoteSharedCatalog module.
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.1.

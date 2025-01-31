@@ -1,9 +1,13 @@
 ---
 title: Commerce payment provider gateway
 description: This is an overview of how to create and handle transactions based on order details.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -19,7 +23,7 @@ The following diagram shows a simplified interaction flow between Adobe Commerce
 
 Commerce payment provider supports the following payment operations:
 
--  authorize: process [authorization](https://glossary.magento.com/authorization) transaction; funds are blocked on customer account, but not withdrawn
+-  authorize: process authorization transaction; funds are blocked on customer account, but not withdrawn
 
 -  sale: process authorization transaction and capture automatically, funds are withdrawn
 

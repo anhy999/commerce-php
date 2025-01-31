@@ -1,15 +1,19 @@
 ---
 title: Gateway Command
 description: Learn how provider responses are sent, received, and processed.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
 # Gateway Command
 
-Gateway Command is a component of the Adobe Commerce [payment gateway](https://glossary.magento.com/payment-gateway) that takes the [payload](index.md#terms-used) required for a particular payment provider and sends, receives, and processes the provider's response.
+Gateway Command is a component of the Adobe Commerce payment gateway that takes the [payload](index.md#terms-used) required for a particular payment provider and sends, receives, and processes the provider's response.
 
 For each operation (authorization, capture and so on) of a certain payment provider - a separate gateway command is added.
 

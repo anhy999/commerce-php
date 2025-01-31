@@ -1,15 +1,19 @@
 ---
 title: Token UI component provider
 description: Learn how to create custom vault payment UI components that display stored tokens.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
 # Token UI component provider
 
-This topic describes how to create custom vault payments UI components that are used to display stored tokens on [checkout](https://glossary.magento.com/checkout) page and order placing using vault.
+This topic describes how to create custom vault payments UI components that are used to display stored tokens on checkout page and order placing using vault.
 
 ## Token component provider
 
@@ -31,7 +35,7 @@ interface TokenUiComponentProviderInterface
 }
 ```
 
-The basic implementation of the token [UI component](https://glossary.magento.com/ui-component) provider can be like following:
+The basic implementation of the token UI component provider can be like following:
 
 ```php
 class TokenUiComponentProvider implements TokenUiComponentProviderInterface
@@ -60,7 +64,7 @@ class TokenUiComponentProvider implements TokenUiComponentProviderInterface
 }
 ```
 
-This implementation allows to retrieve all available payment token details and specify the JS component for [storefront](https://glossary.magento.com/storefront).
+This implementation allows to retrieve all available payment token details and specify the JS component for storefront.
 
 Having created the component provider, you need to add it to the list of available vault config providers in `di.xml` - the DI configuration file.
 
@@ -78,7 +82,7 @@ In the following example the `Magento\Braintree\Model\Ui\TokenUiComponentProvide
 
 ## JavaScript component for vault
 
-In your custom module directory, create the component’s `.js` file. It must be located under the `<your_module_dir>/view/frontend/web/js/view/` directory.
+In your custom module directory, create the component's `.js` file. It must be located under the `<your_module_dir>/view/frontend/web/js/view/` directory.
 
 The component should extend [vault.js](https://github.com/magento/magento2/tree/2.4/app/code/Magento/Vault/view/frontend/web/js/view/payment/method-renderer/vault.js):
 

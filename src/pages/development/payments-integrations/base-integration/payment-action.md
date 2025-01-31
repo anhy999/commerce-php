@@ -1,9 +1,13 @@
 ---
 title: Add a payment action
 description: Learn how to create a payment action and configure the command for that payment action.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -75,4 +79,4 @@ The `BraintreeAuthorizeRequest` builder contains the following builders (`app/co
 
 The most important builder in this pool is `Magento\Braintree\Gateway\Request\PaymentDataBuilder`, the `payment` builder. It is responsible for the payment information part of the request.
 
-Please see the [Get payment information from frontend to backend](get-payment-info.md) for details about how payment information can be handled and [Add a custom payment method to checkout](../../../tutorials/frontend/custom-checkout/add-payment-method.md): for information on how to add a custom payment integration to [checkout](https://glossary.magento.com/checkout) page.
+Please see the [Get payment information from frontend to backend](get-payment-info.md) for details about how payment information can be handled and [Add a custom payment method to checkout](../../../tutorials/frontend/custom-checkout/add-payment-method.md): for information on how to add a custom payment integration to checkout page.

@@ -1,11 +1,13 @@
 ---
 title: Copy Fieldsets | Commerce PHP Extensions
 description: Follow this tutorial to copy custom data from a quote object to an order object.
+keywords:
+  - Extensions
 ---
 
 # Copy fieldsets
 
-In this tutorial, you will learn to copy custom data from a [quote](https://glossary.magento.com/quote) object to an order object using the [Magento/Framework/DataObject/Copy][0] class.
+In this tutorial, you will learn to copy custom data from a quote object to an order object using the [Magento/Framework/DataObject/Copy][0] class.
 
 ## Step 1: Define your attributes
 
@@ -99,8 +101,8 @@ The following code snippets highlight the code pieces needed to copy a fieldset 
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Vendor\Module\Observer;
@@ -169,6 +171,6 @@ and clean the cache with this command:
 bin/magento cache:clean
 ```
 
-[0]:https://github.com/magento/magento2/blob/2.4}/lib/internal/Magento/Framework/DataObject/Copy.php
+[0]:https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/DataObject/Copy.php
 [1]:../../development/components/attributes.md
 [2]:../../development/components/dependency-injection.md

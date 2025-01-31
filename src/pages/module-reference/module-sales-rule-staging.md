@@ -1,6 +1,6 @@
 ---
 title: SalesRuleStaging
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_SalesRuleStaging module
@@ -40,4 +40,7 @@ For more information about Magento extension mechanism, see [Magento plug-ins](h
 
 ## Additional information
 
-For more Magento 2 developer documentation, see [Magento 2 Developer Documentation](https://devdocs.magento.com).
+For more Magento 2 developer documentation, see [Adobe Commerce Developer Documentation](https://developer.adobe.com/commerce/docs/).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.6.

@@ -1,6 +1,8 @@
 ---
 title: Adapters | Commerce PHP Extensions
 description: Learn about Adobe Commerce and Magento Open Source adapter classes, when to use them, and how to write them.
+keywords:
+  - Extensions
 ---
 
 # Adapters
@@ -10,8 +12,8 @@ These classes allow you to use functionality from third-party libraries in your 
 
 ## When to use
 
-You should always use [adapter](https://glossary.magento.com/adapter) classes instead of directly using classes from third-party libraries.
-This reduces the change impact on your code when the [API](https://glossary.magento.com/api) changes in a third-party [library](https://glossary.magento.com/library).
+You should always use adapter classes instead of directly using classes from third-party libraries.
+This reduces the change impact on your code when the API changes in a third-party library.
 
 We recommend using adapter classes for [dependency injection](dependency-injection.md) to get access to the functionality provided by third-party classes.
 
@@ -41,7 +43,7 @@ The [`AdapterInterface`](https://github.com/magento/magento2/blob/2.4/lib/intern
 
 ## Examples
 
-The code below describes an interface for an adapter that parses [markdown](https://glossary.magento.com/markdown).
+The code below describes an interface for an adapter that parses markdown.
 
 ```php
 /**
@@ -61,7 +63,7 @@ interface AdapterInterface
 }
 ```
 
-The code below is an implementation class of the `AdapterInterface` that uses the [php-markdown](https://github.com/michelf/php-markdown) library to convert markdown into [HTML](https://glossary.magento.com/html).
+The code below is an implementation class of the `AdapterInterface` that uses the [php-markdown](https://github.com/michelf/php-markdown) library to convert markdown into HTML.
 
 ```php
 namespace MyCompany\MyModule\Markdown\Parser\Adapter\PhpMarkdown;
@@ -132,7 +134,7 @@ class CiconiaParser implements AdapterInterface
 }
 ```
 
-The following [dependency injection](https://glossary.magento.com/dependency-injection) entries belong in the `di.xml` file.
+The following dependency injection entries belong in the `di.xml` file.
 They describe to the ObjectManager how to create the third-party and adapter classes.
 
 ```xml

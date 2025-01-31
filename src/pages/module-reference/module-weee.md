@@ -1,6 +1,6 @@
 ---
 title: Weee
-description: README.md contents of the module from the source code
+description: N/A
 ---
 
 # Magento_Weee module
@@ -31,7 +31,7 @@ Before installing this module, note that the Magento_Weee is dependent on the fo
 - Magento_Store
 - Magento_Tax
 
-Refer to [how to enable or disable modules in Magento 2](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-enable.html).
+Refer to [how to enable or disable modules in Magento 2](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Structure
 
@@ -93,7 +93,7 @@ For more information about a layout, see the [Layout documentation](https://deve
 
 ### UI components
 
-You can extend a customer form and widgets using the configuration files located in the directories 
+You can extend a customer form and widgets using the configuration files located in the directories
 
 - `view/adminhtml/ui_component`:
     - `product_attribute_add_form`
@@ -102,3 +102,6 @@ You can extend a customer form and widgets using the configuration files located
     - `widget_recently_viewed`
 
 For information about a UI component, see [Overview of UI components](https://developer.adobe.com/commerce/frontend-core/ui-components/).
+
+<InlineAlert slots="text" />
+The version of this module is 100.4.7.

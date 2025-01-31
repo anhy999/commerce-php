@@ -1,9 +1,13 @@
 ---
 title: Response Validator
 description: Learn how to verify gateway response for formatting, security, and execution.
+keywords:
+  - Extensions
+  - Integration
+  - Payments
 ---
 
-import Docs from '/src/pages/_includes/braintree-note.md'
+import Docs from '/src/_includes/braintree-note.md'
 
 <Docs />
 
@@ -80,7 +84,7 @@ class AcceptValidator extends AbstractValidator
 }
 ```
 
-Now, the newly added validator should be specified for a specific command. Below is an example of specifying a validator for an [authorization](https://glossary.magento.com/authorization) command:
+Now, the newly added validator should be specified for a specific command. Below is an example of specifying a validator for an authorization command:
 
 ```xml
 ...

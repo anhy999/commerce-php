@@ -1,12 +1,14 @@
 ---
 title: JavaScript Coding Standard | Commerce PHP Extensions
 description: Review standards for writing JavaScript and jQuery code for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Extensions
 ---
 
 # JavaScript coding standard
 
 Use the [ESLint rules](https://github.com/magento/magento-coding-standard/blob/develop/eslint/.eslintrc-magento) to make sure your code adheres to the coding standards.
-Developers writing [JavaScript](https://glossary.magento.com/javascript) and [jQuery](https://glossary.magento.com/jquery) code for Adobe Commerce and Magento Open Source must adhere to these guidelines and follow the standards listed in this document.
+Developers writing JavaScript and jQuery code for Adobe Commerce and Magento Open Source must adhere to these guidelines and follow the standards listed in this document.
 
 Use [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt) to interpret the "must," "must not," "required," "shall," "shall not," "should," "should not," "recommended," "may," and "optional" keywords.
 
@@ -27,7 +29,7 @@ It can use custom rules to enforce specific coding standards.
 
 ### Anonymous function calls
 
-When you declare an anonymous function as an argument in a function call, indent the body of the function by *four* spaces from the left edge of the statement or function [keyword](https://glossary.magento.com/keyword) to increase readability.
+When you declare an anonymous function as an argument in a function call, indent the body of the function by *four* spaces from the left edge of the statement or function keyword to increase readability.
 
 ```javascript
 myObject.myFunction(param1, function (a,b) {
@@ -58,7 +60,7 @@ The recommended max line length is 80 characters.
 
 Source code lines must not exceed 120 characters.
 
-Comment lines that contain an example command or a literal [URL](https://glossary.magento.com/url) longer than 120 characters may exceed the 120 character limit for ease of cutting and pasting.
+Comment lines that contain an example command or a literal URL longer than 120 characters may exceed the 120 character limit for ease of cutting and pasting.
 
 Do not be concerned about header guards that exceed 120 characters.
 
@@ -195,7 +197,7 @@ var msg = '<span class="text">Hello World!</div>';
 
 *  Class method names should start with an English verb in its infinitive form that describes the method.
 *  Names for accessors for instance or static variables should always have the `get` or `set` prefix.
-*  In [design pattern](https://glossary.magento.com/design-pattern) classes, implementation method names should contain the pattern name where practical to provide better behavior description.
+*  In design pattern classes, implementation method names should contain the pattern name where practical to provide better behavior description.
 *  Methods that return status flags or Boolean values should have the `has` or `is` prefix.
 
 ### Variables and properties
@@ -236,7 +238,7 @@ You cannot avoid exceptions if you are doing something non-trivial (using an app
 Without custom exceptions, returning error information from a function that also returns a value can be tricky, not to mention inelegant.
 Bad solutions include passing in a reference type to hold error information or always returning Objects with a potential error member.
 
-These basically amount to a primitive [exception](https://glossary.magento.com/exception) handling hack.
+These basically amount to a primitive exception handling hack.
 Feel free to use custom exceptions when appropriate.
 
 ### Standard features
@@ -357,8 +359,6 @@ var foo = 'bar',
 
 ## Custom rules
 
-There is a set of custom Eslint rules to ensure code compatiblity with the latest versions of third-party libraries.
+There is a set of custom Eslint rules to ensure code compatibility with the latest versions of third-party libraries.
 
 These custom rules are included using the `rulePaths` setting in the [Eslint Grunt configuration](https://github.com/magento/magento2/blob/2.4/dev/tools/grunt/configs/eslint.json).
-
-The source code of the rules can be found in the [Eslint custom rules folder](https://github.com/magento/magento2/tree/2.4/dev/tests/static/testsuite/Magento/Test/Js/_files/eslint).

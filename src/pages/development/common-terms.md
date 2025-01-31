@@ -1,17 +1,19 @@
 ---
 title: Glossary of common terms | Commerce PHP Extensions
 description: Review common terms that are used to describe technical aspects of Adobe Commerce and Magento Open Source extension development.
+keywords:
+  - Extensions
 ---
 
 # Glossary of terms
 
 ## Component
 
-We refer to what you're coding as *components*. (Composer refers to them as <a href="https://getcomposer.org/doc/05-repositories.md#packages" target="_blank">*packages*</a>; the terms component and package are equivalent.) A [component](https://glossary.magento.com/magento-component) can be classified into the following *types*:
+We refer to what you're coding as *components*. (Composer refers to them as <a href="https://getcomposer.org/doc/05-repositories.md#packages" target="_blank">*packages*</a>; the terms component and package are equivalent.) A component can be classified into the following *types*:
 
-*  [Module](https://glossary.magento.com/module) (extend application capabilities)
-*  [Theme](https://glossary.magento.com/theme) (change the look and feel of your [storefront](https://glossary.magento.com/storefront) and Admin)
-*  [Language package](https://glossary.magento.com/language-package) (localize the storefront and Admin)
+*  Module (extend application capabilities)
+*  Theme (change the look and feel of your storefront and Admin)
+*  Language package (localize the storefront and Admin)
 
 You can *package* your components as follows:
 
@@ -24,7 +26,7 @@ You can *package* your components as follows:
 
 <InlineAlert variant="info" slots="text"/>
 
-Commerce Marketplace uses the blanket term *product* to refer to a component or a [metapackage](https://glossary.magento.com/metapackage).
+Commerce Marketplace uses the blanket term *product* to refer to a component or a metapackage.
 
 ## Metapackage
 
@@ -38,4 +40,4 @@ Merchants do not need to understand that, under the covers, some packages are sh
 
 <InlineAlert variant="warning" slots="text"/>
 
-You can upload to Commerce Marketplace as many shared packages as you want but you must specifically give components access to them. Failure to do so means your components won't work properly after they're installed by merchants. For more information, see the [Commerce Marketplace User Guide](http://docs.magento.com/marketplace/user_guide/getting-started.html).
+You can upload to Commerce Marketplace as many shared packages as you want but you must specifically give components access to them. Failure to do so means your components won't work properly after they're installed by merchants. For more information, see the [Commerce Marketplace User Guide](https://developer.adobe.com/commerce/marketplace/guides/sellers/).

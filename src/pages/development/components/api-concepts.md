@@ -1,17 +1,19 @@
 ---
 title: Public Interfaces and APIs | Commerce PHP Extensions
 description: Learn about Adobe Commerce and Magento Open Source interfaces and APIs.
+keywords:
+  - Extensions
 ---
 
 # Public interfaces and APIs
 
-Learn about interaces and APIs.
+Learn about interfaces and APIs.
 
 ## What is an interface?
 
-A _public interface_ is a set of code that third-party developers can call, implement, or build as a [plug-in](https://glossary.magento.com/plug-in). Adobe guarantees that this code will not change in subsequent releases without a major version change.
+A _public interface_ is a set of code that third-party developers can call, implement, or build as a plug-in. Adobe guarantees that this code will not change in subsequent releases without a major version change.
 
-Public interfaces for a [module](https://glossary.magento.com/module) are marked with the `@api` annotation.
+Public interfaces for a module are marked with the `@api` annotation.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -22,8 +24,8 @@ Third-party developers should use only these interfaces, that is, interfaces wit
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\CatalogRule\Api;
@@ -51,8 +53,8 @@ The ``Magento\CatalogRule\Api\CatalogRuleRepositoryInterface`` interface
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\CatalogRule\Api;
@@ -118,8 +120,8 @@ The ``Magento\CatalogRule\Model\CatalogRuleRepository`` implements the default m
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\CatalogRule\Model;
@@ -177,6 +179,6 @@ The following items are considered types of APIs:
 -  Configuration files structure
 -  Events
 -  Client API
--  Provider [API](https://glossary.magento.com/api) (SPI)
+-  Provider API (SPI)
 
-Directory structure and configuration file structure are types of APIs because [extension](https://glossary.magento.com/extension) developers use them. Developers write configurations, and place their [static files](https://glossary.magento.com/static-files) in specified folders; so if the configuration file structure or directory structure changes in subsequent releases, modules and extensions may break.
+Directory structure and configuration file structure are types of APIs because extension developers use them. Developers write configurations, and place their static files in specified folders; so if the configuration file structure or directory structure changes in subsequent releases, modules and extensions may break.

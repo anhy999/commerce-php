@@ -3,11 +3,13 @@ title: Topics in Asynchronous API | Commerce PHP Extensions
 description: Learn about how topic exchange works in the Adobe Commerce and Magento Open Source message queue system.
 contributor_name: comwrap GmbH
 contributor_link: https://www.comwrap.com
+keywords:
+  - Extensions
 ---
 
 # Topics in asynchronous API
 
-The message queue system uses "topic exchange" for managing messages. More information about topics can be found [here](https://www.rabbitmq.com/tutorials/tutorial-five-python.html).
+The message queue system uses "topic exchange" for managing messages. More information about topics can be found [here](https://www.rabbitmq.com/tutorials/tutorial-five-php).
 
 Topics are usually defined in a `communication.xml` configuration file. See [Configure message queues](configuration.md#communicationxml)
 

@@ -1,13 +1,15 @@
 ---
 title: Convert Serialized Data to JSON | Commerce PHP Extensions
 description: Follow this tutorial to convert database data from the defaul PHP serialized format to JSON.
+keywords:
+  - Extensions
 ---
 
-# Convert serliazed data to JSON
+# Convert serialized data to JSON
 
-The following tutorial lists the steps needed to create an upgrade script that converts the data stored in the database from the default [PHP](https://glossary.magento.com/php) serialized format to JSON format.
+The following tutorial lists the steps needed to create an upgrade script that converts the data stored in the database from the default PHP serialized format to JSON format.
 
-Use this tutorial to create an upgrade script to update your [extension](https://glossary.magento.com/extension) to work with Adobe Commerce and Magento Open Source 2.2 and above.
+Use this tutorial to create an upgrade script to update your extension to work with Adobe Commerce and Magento Open Source 2.2 and above.
 
 ## Before you begin
 
@@ -15,7 +17,7 @@ Identify the data you need to convert to JSON in the database.
 
 Your extension *must* convert data in the following cases:
 
-1. The extension stores serialized data provided by a core [module](https://glossary.magento.com/module) that now uses the JSON format.
+1. The extension stores serialized data provided by a core module that now uses the JSON format.
 1. The extension uses the automatic serializing mechanism provided by the Magento framework (i.e. the extension declares `\Magento\Framework\Model\ResourceModel\Db\AbstractDb::$_serializableFields`).
 
 Your extension will continue working in Adobe Commerce and Magento Open Source 2.2 and above in the following cases, but we recommend you switch to using the JSON format for security reasons:
@@ -25,7 +27,7 @@ Your extension will continue working in Adobe Commerce and Magento Open Source 2
 
 ### API Overview
 
-This tutorial uses the following framework [API](https://glossary.magento.com/api) in the following ways:
+This tutorial uses the following framework API in the following ways:
 
 *  `\Magento\Framework\DB\FieldDataConverter` - This class converts values for a field in a table from one format to another.
    *  `\Magento\Framework\DB\FieldDataConverterFactory` - This class creates instances of the `FieldDataConverter` with the appropriate data converter implementation.
@@ -54,8 +56,8 @@ Example upgrade script content:
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\CustomModule\Setup;
@@ -144,7 +146,7 @@ if ($this->moduleManager->isEnabled('Magento_Sales')) {
 
 ## Step 3: Write the conversion logic
 
-The [conversion](https://glossary.magento.com/conversion) logic in your script depends on how your extension stores the serialized data.
+The conversion logic in your script depends on how your extension stores the serialized data.
 
 If your extension stores serialized data in different ways, you will need to use different conversion methods.
 
@@ -280,8 +282,8 @@ Since you cannot assume the format of the data when initially converted, the fol
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 namespace Magento\CustomModule\Setup;

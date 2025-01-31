@@ -1,6 +1,6 @@
 ---
 title: AdobeStockAsset
-description: README.md contents of the module from the source code
+description: Magento module responsible for the Adobe Stock assets handling implementation on Magento side
 ---
 
 # Magento_AdobeStockAsset module
@@ -17,7 +17,7 @@ The Magento_AdobeStockAsset module creates the following tables in the database:
 
 Before disabling or uninstalling this module, note that the `Magento_AdobeStockImage` module depends on this module.
 
-For information about module installation in Magento 2, see [Enable or disable modules](https://devdocs.magento.com/guides/v2.3/install-gde/install/cli/install-cli-subcommands-enable.html).
+For information about module installation in Magento 2, see [Enable or disable modules](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/tutorials/manage-modules.html).
 
 ## Extensibility
 
@@ -27,4 +27,7 @@ Extension developers can interact with the Magento_AdobeStockAsset module. For m
 
 ## Additional information
 
-For information about significant changes in patch releases, see [2.3.x Release information](https://devdocs.magento.com/guides/v2.3/release-notes/bk-release-notes.html).
+For information about significant changes in patch releases, see [2.3.x Release information](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/overview.html).
+
+<InlineAlert slots="text" />
+The version of this module is 1.3.3.

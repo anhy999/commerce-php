@@ -1,6 +1,9 @@
 ---
 title: Create Custom Cache Engines | Commerce PHP Extensions
 description: Learn how to use database caching for Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Cache
+  - Extensions
 ---
 
 # Create custom cache engines
@@ -10,7 +13,7 @@ This topic discusses how to use the database for caching. After you complete the
 This topic discusses how to set up database caching and how to verify database caching is working. We discuss the following options:
 
 *  Using the `default` cache frontend, in which case you modify `di.xml` only.
-*  Using a custom [cache](https://glossary.magento.com/cache) frontend, in which case you modify `env.php` only.
+*  Using a custom cache frontend, in which case you modify `env.php` only.
 
 <InlineAlert variant="warning" slots="text"/>
 
@@ -19,13 +22,13 @@ Varnish is designed to accelerate the HTTP protocol.
 
 ## Prerequisites
 
-Before you continue, if you're using your own frontend cache, make sure you [associate cache frontends with cache types]. If you're using the `default` [frontend](https://glossary.magento.com/frontend) cache, you don't have to do that.
+Before you continue, if you're using your own frontend cache, make sure you [associate cache frontends with cache types]. If you're using the `default` frontend cache, you don't have to do that.
 
 We provide [sample configurations] at the end of this topic.
 
 ## Database caching using the `default` cache frontend
 
-To enable database caching using the `default` frontend, you must modify the `<magento_root>/app/etc/di.xml` file, which is the global deployment injection configuration for the application.
+To enable database caching using the `default` frontend, you must modify the `<magento_root>/app/etc/di.xml` file, which is the global dependency injection configuration for the application.
 
 To modify `di.xml`:
 
@@ -99,7 +102,7 @@ To modify `di.xml`:
 
 ## Database caching using a custom cache frontend
 
-This section discusses how to set up database caching with a custom [cache frontend](https://glossary.magento.com/cache-frontend).
+This section discusses how to set up database caching with a custom cache frontend.
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -158,7 +161,7 @@ Use the following steps:
    rm -rf <magento_root>/var/cache/* <magento_root>/var/page_cache/* <magento_root>/generated/metadata/* <magento_root>/generated/code/*
    ```
 
-1. In a web browser, go to any cacheable page (such as the [storefront](https://glossary.magento.com/storefront) front door page).
+1. In a web browser, go to any cacheable page (such as the storefront front door page).
 
    If exceptions display, verify `di.xml` syntax and try again. (To see exceptions in the browser, you must [enable developer mode].)
 
@@ -276,8 +279,8 @@ This section contains code sample snippets to refer to when configuring database
 [Varnish]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cache/varnish/config-varnish.html
 [associate cache frontends with cache types]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cache/cache-types.html
 [sample configurations]: #configuration-examples
-[file system owner]: https://devdocs.magento.com/guides/v2.4/install-gde/prereq/file-sys-perms-over.html
+[file system owner]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/file-system/overview
 [Verify database caching is working]: #verify-database-caching-is-working
 [Configuration examples]: #configuration-examples
 [enable developer mode]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/set-mode.html#change-to-developer-mode
-[phpMyAdmin]: https://devdocs.magento.com/guides/v2.4/install-gde/prereq/optional.html#install-optional-phpmyadmin
+[phpMyAdmin]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/optional-software#phpmyadmin

@@ -1,6 +1,9 @@
 ---
 title: Public Content | Commerce PHP Extensions
 description: Learn how to work with public data when implementing a caching in your Adobe Commerce or Magento Open Source extension.
+keywords:
+  - Cache
+  - Extensions
 ---
 
 # Public content
@@ -40,8 +43,8 @@ You can use the Admin to define caching policies or you can define them programm
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Framework\App\Action\Action;
@@ -76,7 +79,7 @@ class DynamicController extends Action
 
 ## Configure page variations
 
-Most caching servers and proxies use a [URL](https://glossary.magento.com/url) as a key for cache records. However, Adobe Commerce and Magento Open Source URLs are not unique *enough* to allow caching by URL only. Cookie and session data in the URL can also lead to undesirable side effects,  including:
+Most caching servers and proxies use a URL as a key for cache records. However, Adobe Commerce and Magento Open Source URLs are not unique *enough* to allow caching by URL only. Cookie and session data in the URL can also lead to undesirable side effects,  including:
 
 -  Collisions in cache storage
 -  Unwanted information leaks (e.g., French language website partially visible on an English language website, prices for customer group visible in public, etc.)
@@ -98,8 +101,8 @@ For example, let's declare a context variable that shows a drinks catalog and ad
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Customer\Model\Session;
@@ -148,17 +151,17 @@ sub vcl_hash {
 
 ## Invalidate public content
 
-You can clear cached content immediately after a entity changes. The application uses `IdentityInterface` to link entities in the application with cached content and to know what cache to clear when an [entity](https://glossary.magento.com/entity) changes.
+You can clear cached content immediately after a entity changes. The application uses `IdentityInterface` to link entities in the application with cached content and to know what cache to clear when an entity changes.
 
 This section shows you how to tell the application what cache to clear when you change an entity.
 
-First, your entity [module](https://glossary.magento.com/module) must implement [`Magento/Framework/DataObject/IdentityInterface`](https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/DataObject/IdentityInterface.php) as follows:
+First, your entity module must implement [`Magento/Framework/DataObject/IdentityInterface`](https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/DataObject/IdentityInterface.php) as follows:
 
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Framework\DataObject\IdentityInterface;
@@ -186,8 +189,8 @@ Second, the block object must also implement `Magento/Framework/DataObject/Ident
 ```php
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright [first year code created] Adobe
+ * All rights reserved.
  */
 
 use Magento\Framework\DataObject\IdentityInterface;
@@ -212,6 +215,6 @@ Adobe Commerce and Magento Open Source use cache tags for link creation. The per
 
 Use only HTTP POST or PUT methods to change state (e.g., adding to a shopping cart, adding to a wishlist, etc.) and don't expect to see caching on these methods. Using GET or HEAD methods might trigger caching and prevent updates to private content. For more information about caching, see [RFC-2616 section 13](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)
 
-import Docs from '/src/pages/_includes/page-cache-checklist.md'
+import Docs from '/src/_includes/page-cache-checklist.md'
 
 <Docs />

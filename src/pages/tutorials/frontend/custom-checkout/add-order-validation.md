@@ -1,11 +1,14 @@
 ---
-title: Add Custom Validations Before Order Placement | Commerce PHP Extensions
-description: Follow this tutorial to create programmatic validations that check orders before they are placed in the Adobe Commerce and Magento Open Source checkout experience.
+title: Add validation before order | Commerce PHP Extensions
+description: Follow this tutorial to create programmatic validations that check orders before they are placed in the checkout experience.
+keywords:
+  - Checkout
+  - Extensions
 ---
 
 # Add custom validations before order placement
 
-This topic describes how to add custom validations to be performed before the order is placed during [checkout](https://glossary.magento.com/checkout). Namely, the validations which are performed after a shopper clicks the **Place Order** button. Writing the validation logic itself is not covered in this topic.
+This topic describes how to add custom validations to be performed before the order is placed during checkout. Namely, the validations which are performed after a shopper clicks the **Place Order** button. Writing the validation logic itself is not covered in this topic.
 
 To add custom validations before the order placement action, you must do the following:
 
